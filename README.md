@@ -67,6 +67,13 @@ HTML/CSS/fonts/images and drops the proprietary runtime, since that runtime:
   content in via the dropped runtime (built on Framer Motion). This copy adds
   a simple CSS fade-in on `#container` (see `styles/motion.css`) that respects
   `prefers-reduced-motion`. It looks close but isn't the original easing/stagger.
+- **Card resting opacity was inconsistent (one card was invisible).** Same
+  root cause as above: the export froze each "Selected works" card's preview
+  frame mid scroll-reveal, leaving a different leftover inline opacity per
+  card — `0.9` on some, unset (fully opaque) on others, and `0` (fully
+  invisible) on the Housing Anywhere card. `styles/interactions.css` now
+  normalizes all 6 cards to a consistent resting `opacity: 0.9`, which also
+  brightens to `1` on hover as part of the card hover/press interaction.
 - **Three buttons are inert: "Experiments with GenAI", "Download CV", and the
   case-study "← Back" button.** These aren't real links — they're Figma Sites
   "interaction" elements (`role="link"`, no `href`) driven by the same dropped
@@ -80,13 +87,13 @@ HTML/CSS/fonts/images and drops the proprietary runtime, since that runtime:
   - Download CV → `<a href="assets/your-cv.pdf">` once you add a CV file.
   - Experiments with GenAI → point at wherever that content lives (possibly
     `https://vibecoders.global/`, unclear from the live site).
-- **Responsive breakpoints are untouched but not visually re-verified.** The
-  original CSS ships all three breakpoint layouts (desktop ≥1280px, tablet
-  800–1279px, mobile <800px, plus a 600px sub-breakpoint) inline and toggles
-  them with plain `@media` queries — nothing was rewritten here, so behavior
-  should carry over exactly. I wasn't able to resize the browser window in
-  my tool environment to visually confirm it — worth a quick manual resize
-  check on your end.
+- **Responsive breakpoints are untouched.** The original CSS ships all three
+  breakpoint layouts (desktop ≥1280px, tablet 800–1279px, mobile <800px, plus
+  a 600px sub-breakpoint) inline and toggles them with plain `@media` queries
+  — nothing was rewritten here, so behavior should carry over exactly. The
+  homepage was visually re-verified at 375/800/1280px while building the card
+  hover interaction below, with no layout regressions; the case-study pages
+  weren't re-checked and are still worth a manual resize pass.
 - One data endpoint the live site calls (`/_json/.../_cms/_index.json`)
   already 503s on the live site itself — it wasn't mirrored since it's
   unused/broken there too.
