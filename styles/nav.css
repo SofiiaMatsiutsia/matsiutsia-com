@@ -1,0 +1,604 @@
+/* Site-wide nav. Hand-written and unlayered, so it always wins over the
+   machine-generated @layer CSS on the 5 existing pages without needing to
+   fight specificity. Sits outside the 3 breakpoint blocks - one nav per
+   page, styled responsively here instead of duplicated 3x like the rest
+   of the markup. */
+
+:root {
+  --site-nav-mobile-bp: 800px; /* single constant: raise to 1024px if tablet (800-1023px) feels cramped with real copy */
+}
+
+.site-nav,
+.site-nav *,
+.site-nav *::before,
+.site-nav *::after {
+  box-sizing: border-box;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* stays below .bypass-link's 10000 */
+  background: #f6f6f6;
+  border-bottom: 1px solid #eee;
+  font-family: "Inter:Regular", sans-serif;
+  font-size: 14px;
+  color: #000;
+  animation: site-nav-fade-in 500ms ease-out;
+}
+
+@keyframes site-nav-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav {
+    animation: none;
+  }
+}
+
+.site-nav a {
+  color: inherit;
+  text-decoration: none;
+  margin: 0;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+}
+
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+
+.site-nav__home,
+.site-nav__toggle,
+.site-nav__cta {
+  position: relative;
+  z-index: 2; /* stays above the fixed mobile panel, which sits at z-index:1 */
+}
+
+.site-nav__home {
+  font-family: "EB Garamond:Regular", serif;
+  font-size: 18px;
+  white-space: nowrap;
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav__home img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-nav__links a {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.site-nav__links a[aria-current] {
+  background: #eee;
+}
+
+a.site-nav__cta {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: #000;
+  color: #fff;
+  font-family: "Inter:Semi Bold", sans-serif;
+  white-space: nowrap;
+}
+
+.site-nav__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.site-nav__panel-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-nav__panel-social a {
+  display: inline-flex;
+}
+
+.site-nav__panel-social img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Hover / press, mirroring styles/interactions.css conventions:
+   hover only on devices that support real hover, press works everywhere,
+   both reset under prefers-reduced-motion. */
+@media (hover: hover) and (pointer: fine) {
+  .site-nav__links a,
+  .site-nav__cta,
+  .site-nav__toggle {
+    transition: background-color 150ms ease, opacity 150ms ease;
+  }
+  .site-nav__links a:hover {
+    background: #eee;
+  }
+  .site-nav__cta:hover {
+    opacity: 0.85;
+  }
+  .site-nav__toggle:hover {
+    background: #eee;
+  }
+}
+
+.site-nav__links a:active,
+.site-nav__cta:active,
+.site-nav__toggle:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__links a,
+  .site-nav__cta,
+  .site-nav__toggle {
+    transition: none;
+  }
+  .site-nav__links a:active,
+  .site-nav__cta:active,
+  .site-nav__toggle:active {
+    transform: none;
+  }
+}
+
+/* ===== >= 800px: single-line bar. Toggle + mobile-only social hidden;
+   panel unwraps via display:contents so its children (links, social)
+   become plain flex items of .site-nav__inner. ===== */
+@media (min-width: 800px) {
+  .site-nav__panel {
+    display: contents;
+  }
+  .site-nav__panel-social {
+    display: none;
+  }
+  .site-nav__toggle {
+    display: none;
+  }
+}
+
+/* ===== < 800px: compact header (home + CTA + burger) with a full-screen
+   overlay panel. Split into html.js (JS present, toggle-driven overlay)
+   and html:not(.js) (no JS: static stacked list, no dead burger). ===== */
+@media (max-width: 799px) {
+  .site-nav__home {
+    font-size: 16px;
+    flex-shrink: 0; /* fixed-size logo image - never clip it */
+  }
+
+  .site-nav__cta {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  html.js .site-nav__toggle {
+    display: inline-flex;
+  }
+
+  html.js .site-nav__panel {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: #f6f6f6;
+    flex-direction: column;
+    padding: 84px 20px 32px; /* top padding clears the compact header row (~68px) */
+    overflow-y: auto;
+  }
+
+  html.js .site-nav.is-open .site-nav__panel {
+    display: flex;
+  }
+
+  html.js .site-nav__links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+  }
+
+  html.js .site-nav__links a {
+    font-family: "EB Garamond:Regular", serif;
+    font-size: 32px;
+    padding: 10px 4px;
+    width: 100%;
+  }
+
+  html.js .site-nav__panel-social {
+    margin-top: auto;
+    padding-top: 32px;
+    gap: 20px;
+  }
+
+  html:not(.js) .site-nav__links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    padding: 8px 0 12px;
+  }
+
+  html:not(.js) .site-nav__panel-social {
+    gap: 16px;
+    padding-bottom: 12px;
+  }
+
+  /* Without JS, the panel is a normal (tall) flex item, which would
+     otherwise vertically center home/CTA against its full height. Wrap
+     it onto its own row so home + CTA sit together on row 1. */
+  html:not(.js) .site-nav__inner {
+    flex-wrap: wrap;
+  }
+  html:not(.js) .site-nav__panel {
+    flex-basis: 100%;
+    order: 1;
+  }
+}
+
+/* Caps the 5 original (Figma-export) pages' desktop content at the same
+   900px used by the nav and the 4 new pages, centered to match it -
+   see .site-nav__inner above. Their content is already narrower than
+   900px at the 1280 breakpoint, so this only reins in the surrounding
+   whitespace on wider screens - nothing inside needs to reflow. Targets
+   the desktop breakpoint block directly via its stable data-width
+   attribute (data-breakpoint-id differs per page). */
+@media (min-width: 1280px) {
+  #container > [data-width="1280"] {
+    /* The machine CSS sets min-width:100% (via --content-min-width) on
+       this element, which per spec beats max-width whenever min-width
+       is larger - override it or the cap below silently does nothing. */
+    min-width: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* The 600px-wide "content column" class shared by headers, text blocks,
+     and card rows across all 5 original pages - fixed for the original
+     1280px canvas, so it left a dead gap on the right once the outer
+     wrapper above was capped at 900 instead of stretching full-bleed.
+     Stretch it to fill the (now 900px-max) container instead. */
+  #container > [data-width="1280"] .css-i5ewjm {
+    width: 100%;
+  }
+
+  /* index.html only: the "Selected works" card-list wrapper and all 5
+     card links share this 640px-fixed class - same dead-gap problem as
+     css-i5ewjm above, just for the card row instead of the text column. */
+  #container > [data-width="1280"] .css-i5etku {
+    width: 100%;
+  }
+
+  /* The two flex wrappers around the card list use align-items:center,
+     which sizes each level to shrink-fit its child instead of stretching
+     it - this silently defeats the width:100% above two levels deep,
+     since percentages can't resolve against an indeterminate (shrink-fit)
+     parent width. Stretching here is what actually makes the 100% take. */
+  #container > [data-width="1280"] .css-dczajm,
+  #container > [data-width="1280"] .css-zfhu0q {
+    align-items: stretch;
+  }
+
+  /* index.html only: lay the "Selected works" row's 6 project cards out
+     in a 2-column masonry instead of one long single-column stack. The
+     generated markup gives this row no class unique to it - .css-zfhu0q
+     is reused for unrelated flex columns on the other pages - so
+     .selected-works-grid is a hand-added marker class on the row's two
+     (800px and 1280px) breakpoint copies in index.html itself, rather
+     than a :has() selector here. An earlier :has(> a[href=...]) version
+     worked for the first few rules but silently failed to apply for the
+     rest - some rule-count cap on repeating the same :has() clause,
+     apparently specific to this preview sandbox rather than real
+     browsers, but a plain class sidesteps it either way. */
+  #container > [data-width="1280"] .selected-works-grid {
+    display: block;
+    column-count: 2;
+    column-gap: 20px;
+
+    /* The "Selected works" heading is this row's first child - column-span
+       pulls it out above the 2-column flow instead of getting stuck at the
+       top of column 1 alongside the first card. */
+    > .css-i5ewjm {
+      column-span: all;
+      margin-bottom: 20px;
+    }
+
+    > a {
+      /* Card is itself a flex column with align-items:flex-start, which
+         shrink-fits every child (including the image frame below) to its
+         content size instead of the card's own width - same indeterminate-
+         width problem the two flex wrappers above the grid already had.
+         Stretch it so the max-width:100% further down actually resolves
+         against a real number instead of an indeterminate parent width. */
+      align-items: stretch;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin-bottom: 20px;
+
+      /* Every card has a uniform 20px padding (.css-830mls, or nested one
+         level deeper in .css-jbecoi for the internal-panel card, which is
+         structured slightly differently) with no border or background of
+         its own to justify it - at the old 860px single-column width it
+         read as normal breathing room, but at ~420px it just reads as an
+         unexplained gap between the "Selected works" heading and every
+         card's content. Zeroing it lines cards up flush with the heading;
+         the gap between a card's own title/tags/image is unaffected,
+         since that comes from gap:20px on the same element, not padding. */
+      &.css-830mls {
+        padding: 0;
+      }
+
+      .css-jbecoi {
+        padding: 0;
+        /* internal-panel.html's version of the same flex-start shrink-fit
+           issue as .css-x82mwy below - this is the flex container that
+           directly parents its image frame, one level higher up than for
+           the other 5 cards. */
+        align-items: stretch;
+      }
+
+      /* Each card's tag row (.css-kv9s57) is nowrap in the machine CSS,
+         sized for the old full-width (860px) card - harmless there since
+         every tag row fit on one line, but the halved ~420px column above
+         is too narrow for the longest row (team-lift-ai's 5 tags) and it
+         silently overflows into the next column. Wrapping is a no-op for
+         the shorter rows that already fit, so it's safe for all 6 cards. */
+      .css-kv9s57 {
+        flex-wrap: wrap;
+      }
+
+      /* The image-frame wrapper is itself another flex-start column (same
+         shrink-to-fit issue as the card above), one level in from the
+         card, on 2 of the 6 cards (the other 4 already carry width:100%
+         via .css-j9f0op and don't need this). */
+      .css-x82mwy {
+        align-items: stretch;
+      }
+
+      /* The preview screenshot on 2 of the 6 cards (.css-sqs03) is a
+         fixed 600x350px frame sized for the old 860px card - fit fine
+         there, but wider than the ~420-460px column now, so the card's
+         overflow:clip was silently cropping the right edge of the image
+         instead of scaling it down. Same fix as the 3 case-study-page
+         screenshots above. */
+      .css-sqs03 {
+        max-width: 100%;
+        aspect-ratio: 600 / 350;
+        height: auto;
+      }
+    }
+  }
+}
+
+/* Tablet breakpoint (800-1279px): content sat flush against the viewport
+   edges with zero horizontal padding and no width cap at all (unlike the
+   nav above it, which always has its own 20px + 900px cap). Same class
+   names as the 1280 breakpoint above (Figma reused them across both), so
+   the same fixes apply, plus the same min-width/max-width/margin cap. */
+@media (min-width: 800px) and (max-width: 1279px) {
+  #container > [data-width="800"] {
+    min-width: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #container > [data-width="800"] .css-i5ewjm,
+  #container > [data-width="800"] .css-i5etku {
+    width: 100%;
+  }
+
+  #container > [data-width="800"] .css-dczajm,
+  #container > [data-width="800"] .css-zfhu0q {
+    align-items: stretch;
+  }
+
+  /* index.html only: same 2-column masonry as the desktop breakpoint
+     above - see the comments there, including why .selected-works-grid
+     is a hand-added class rather than a :has() selector. */
+  #container > [data-width="800"] .selected-works-grid {
+    display: block;
+    column-count: 2;
+    column-gap: 20px;
+
+    > .css-i5ewjm {
+      column-span: all;
+      margin-bottom: 20px;
+    }
+
+    > a {
+      align-items: stretch;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin-bottom: 20px;
+
+      &.css-830mls {
+        padding: 0;
+      }
+
+      .css-jbecoi {
+        padding: 0;
+        /* internal-panel.html's version of the same flex-start shrink-fit
+           issue as .css-x82mwy below - this is the flex container that
+           directly parents its image frame, one level higher up than for
+           the other 5 cards. */
+        align-items: stretch;
+      }
+
+      .css-kv9s57 {
+        flex-wrap: wrap;
+      }
+
+      .css-x82mwy {
+        align-items: stretch;
+      }
+
+      .css-sqs03 {
+        max-width: 100%;
+        aspect-ratio: 600 / 350;
+        height: auto;
+      }
+    }
+  }
+}
+
+/* 3 of the 4 case studies have one screenshot at the 1280 breakpoint
+   whose wrapper is wider than 900px (fixed px width/height, sized for
+   the original 1280px canvas) - without this it silently clips against
+   the 900px cap above. aspect-ratio + max-width:100% lets each shrink
+   proportionally instead; the img inside already fills its wrapper via
+   object-fit:cover, so it scales down with it.
+   Selectors are prefixed with #container to match the specificity of
+   the machine CSS's own "#container .css-xxxxxx" rules - that component
+   CSS turns out to be unlayered too (only the reset/utility rules are
+   behind @layer), so a bare class selector here would lose to it. */
+#container .css-4c200r { max-width: 100%; aspect-ratio: 1023 / 664.95; height: auto; } /* voyage-monitor.html */
+#container .css-lqvrs6 { max-width: 100%; aspect-ratio: 1024 / 385; height: auto; } /* internal-panel.html */
+#container .css-8w3vbd { max-width: 100%; aspect-ratio: 1023 / 596.75; height: auto; } /* housing-anywhere.html */
+
+/* housing-anywhere.html only: the image wrapper above sits inside a
+   flex-shrink:0 parent (this exact class combo is otherwise unused on
+   the page), which still forces the 1023px-wide child to overflow even
+   after the fix above. Let this one parent shrink too. */
+#container .css-zfhsjc.css-paq0kv:not(.css-v27th6) {
+  flex-shrink: 1;
+  max-width: 100%;
+}
+
+html.nav-open {
+  overflow: hidden;
+}
+
+/* ===== Site-wide footer: social icons + copyable email. Same partial
+   on all 9 pages, styled here since nav.css is the one stylesheet they
+   all share. ===== */
+.site-footer {
+  background: #f6f6f6;
+  border-top: 1px solid #eee;
+  font-family: "Inter:Regular", sans-serif;
+  font-size: 14px;
+  color: #000;
+}
+
+.site-footer__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-footer__social a {
+  display: inline-flex;
+}
+
+.site-footer__social img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+a.site-footer__email {
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: copy;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.site-footer__email {
+    transition: background-color 150ms ease;
+  }
+  a.site-footer__email:hover {
+    background: #eee;
+  }
+}
+
+/* Confirmation toast for the copy-email action (created by nav.js). */
+.site-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 1100; /* above the nav (1000), below .bypass-link (10000) */
+  background: #000;
+  color: #fff;
+  font-family: "Inter:Regular", sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  padding: 10px 16px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.site-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-toast {
+    transition: none;
+    transform: translateX(-50%);
+  }
+  .site-toast.is-visible {
+    transform: translateX(-50%);
+  }
+}
