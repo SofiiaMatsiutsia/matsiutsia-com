@@ -53,23 +53,35 @@
 
   <section id="collage" aria-label="Photos from past talks and workshops">
     <div class="talk-collage">
-      <div class="talk-collage__frame talk-collage__frame--photo" style="--rot: -6deg; --x: 2%; --y: 4%; --delay: 0ms;" tabindex="0">
-        <div class="talk-collage__photo">
-          <img src="assets/images/photos/science-museum.jpg" alt="Speaking at The Science Museum, London" loading="lazy">
-          <span class="talk-collage__caption">Science Museum, London</span>
-        </div>
+      <div class="talk-collage__group">
+        <input type="checkbox" id="lightbox-science-museum" class="talk-lightbox-toggle" aria-label="Expand photo: Science Museum, London">
+        <label for="lightbox-science-museum" class="talk-collage__frame talk-collage__frame--photo" style="--rot: -6deg; --x: 2%; --y: 4%; --delay: 0ms;">
+          <div class="talk-collage__photo">
+            <img src="assets/images/photos/science-museum.jpg" alt="Speaking at The Science Museum, London" loading="lazy">
+            <span class="talk-collage__caption">Science Museum, London</span>
+          </div>
+        </label>
+        <label for="lightbox-science-museum" class="talk-lightbox-backdrop" aria-hidden="true"></label>
       </div>
-      <div class="talk-collage__frame talk-collage__frame--photo" style="--rot: 4deg; --x: 24%; --y: 0%; --delay: 80ms;" tabindex="0">
-        <div class="talk-collage__photo">
-          <img src="assets/images/photos/createwith-brighton.jpg" alt="Speaking at the CreateWith_ conference, Brighton" loading="lazy">
-          <span class="talk-collage__caption">CreateWith_, Brighton</span>
-        </div>
+      <div class="talk-collage__group">
+        <input type="checkbox" id="lightbox-createwith" class="talk-lightbox-toggle" aria-label="Expand photo: CreateWith_, Brighton">
+        <label for="lightbox-createwith" class="talk-collage__frame talk-collage__frame--photo" style="--rot: 4deg; --x: 24%; --y: 0%; --delay: 80ms;">
+          <div class="talk-collage__photo">
+            <img src="assets/images/photos/createwith-brighton.jpg" alt="Speaking at the CreateWith_ conference, Brighton" loading="lazy">
+            <span class="talk-collage__caption">CreateWith_, Brighton</span>
+          </div>
+        </label>
+        <label for="lightbox-createwith" class="talk-lightbox-backdrop" aria-hidden="true"></label>
       </div>
-      <div class="talk-collage__frame talk-collage__frame--photo" style="--rot: -3deg; --x: 46%; --y: 8%; --delay: 160ms;" tabindex="0">
-        <div class="talk-collage__photo">
-          <img src="assets/images/photos/microsoft-magazine.jpg" alt="Featured in Microsoft magazine" loading="lazy">
-          <span class="talk-collage__caption">Microsoft magazine</span>
-        </div>
+      <div class="talk-collage__group">
+        <input type="checkbox" id="lightbox-microsoft" class="talk-lightbox-toggle" aria-label="Expand photo: Microsoft magazine">
+        <label for="lightbox-microsoft" class="talk-collage__frame talk-collage__frame--photo" style="--rot: -3deg; --x: 46%; --y: 8%; --delay: 160ms;">
+          <div class="talk-collage__photo">
+            <img src="assets/images/photos/microsoft-magazine.jpg" alt="Featured in Microsoft magazine" loading="lazy">
+            <span class="talk-collage__caption">Microsoft magazine</span>
+          </div>
+        </label>
+        <label for="lightbox-microsoft" class="talk-lightbox-backdrop" aria-hidden="true"></label>
       </div>
       <div class="talk-collage__frame" style="--rot: 7deg; --x: 66%; --y: 2%; --delay: 240ms;">
         <div class="talk-collage__photo">OKTech, Osaka</div>

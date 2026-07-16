@@ -11,6 +11,7 @@
 }
 
 .talk-collage__frame {
+  display: block;
   position: absolute;
   left: var(--x);
   top: var(--y);
@@ -24,6 +25,10 @@
   opacity: 0;
   animation: talk-collage-toss 500ms ease-out forwards;
   animation-delay: var(--delay);
+}
+
+.talk-collage__frame--photo {
+  cursor: zoom-in;
 }
 
 .talk-collage__photo {
@@ -77,6 +82,74 @@
 .talk-collage__frame--photo:hover .talk-collage__caption,
 .talk-collage__frame--photo:focus-visible .talk-collage__caption {
   opacity: 1;
+}
+
+/* Click-to-expand lightbox, CSS-only checkbox toggle: clicking a photo
+   (the label) checks its hidden sibling checkbox, which expands the
+   photo to the center of the screen and reveals a backdrop; clicking
+   the backdrop (also labeled for the same checkbox) unchecks it and
+   closes. Each .talk-collage__group only ever contains one checkbox,
+   one photo label and one backdrop label, so the class-only selectors
+   below can't cross-trigger a different photo's group. */
+.talk-lightbox-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.talk-lightbox-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  cursor: zoom-out;
+}
+
+.talk-lightbox-toggle:checked ~ .talk-lightbox-backdrop {
+  display: block;
+}
+
+.talk-lightbox-toggle:checked ~ .talk-collage__frame--photo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(90vw, 640px);
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  padding: 16px 16px 32px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  cursor: zoom-out;
+  opacity: 1;
+  animation: none;
+}
+
+.talk-lightbox-toggle:checked ~ .talk-collage__frame--photo .talk-collage__caption {
+  opacity: 1;
+  font-size: 14px;
+  padding: 10px 12px;
+}
+
+.talk-lightbox-toggle:focus-visible ~ .talk-collage__frame--photo .talk-collage__caption {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .talk-collage__frame--photo {
+    transition: transform 250ms ease, width 250ms ease, padding 250ms ease, box-shadow 250ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .talk-collage__frame--photo {
+    transition: none;
+  }
 }
 
 @keyframes talk-collage-toss {
