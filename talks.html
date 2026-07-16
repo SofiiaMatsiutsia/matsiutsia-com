@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Talks — matsiutsia.com</title>
+  <title>Talks &amp; workshops — matsiutsia.com</title>
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/svg+xml" href="assets/logo/matsiutsia_logo.svg">
   <link rel="icon" type="image/png" href="assets/images/21be387b15e76783b32363c12989b06cb4b8a515.png">
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles/cursor.css">
   <link rel="stylesheet" href="styles/nav.css">
   <link rel="stylesheet" href="styles/pages.css">
+  <link rel="stylesheet" href="styles/talks.css">
   <link rel="stylesheet" href="styles/motion.css">
   <script src="js/cursor.js" defer></script>
   <script src="js/nav.js" defer></script>
@@ -39,15 +40,130 @@
 </nav>
 <div id="container">
 <main id="main" class="page">
-  <h1>Talks</h1>
+  <h1>Talks &amp; workshops</h1>
+  <p>Over the past year I've trained 500+ non-technical people in AI literacy — and learned that most AI adoption strategies fail because they ignore the human side. I speak about the barriers people actually face (fear, misconceptions, skill gaps), overcoming resistance to adoption, psychological safety around AI, and peer-to-peer learning models. I combine grassroots community experience with product design thinking to help people, teams, and orgs move from resistance to adoption.</p>
+  <p>I'm a product designer specializing in user research and human-centered design, and founder of <a href="https://vibecoders.global" target="_blank">Vibe Coding Collective</a>.</p>
 
-  <section>
-    <h2>Talks &amp; appearances</h2>
-    <ul class="plain-list">
-      <li><p>Placeholder — talk title, event name, year.</p></li>
-      <li><p>Placeholder — talk title, event name, year.</p></li>
-      <li><p>Placeholder — talk title, event name, year.</p></li>
+  <nav class="subnav" aria-label="Sections on this page">
+    <a href="#topics">Topics I cover</a>
+    <a href="#formats">Formats</a>
+    <a href="#past-talks">Past talks &amp; workshops</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+
+  <section id="collage" aria-label="Photos from past talks and workshops">
+    <div class="talk-collage">
+      <div class="talk-collage__group">
+        <input type="checkbox" id="lightbox-science-museum" class="talk-lightbox-toggle" aria-label="Expand photo: Science Museum, London">
+        <label for="lightbox-science-museum" class="talk-collage__frame talk-collage__frame--photo" style="--rot: -6deg; --x: 2%; --y: 4%; --delay: 0ms;">
+          <div class="talk-collage__photo">
+            <img src="assets/images/photos/science-museum.jpg" alt="Speaking at The Science Museum, London" loading="lazy">
+            <span class="talk-collage__caption">Science Museum, London</span>
+          </div>
+        </label>
+        <label for="lightbox-science-museum" class="talk-lightbox-backdrop" aria-hidden="true"></label>
+      </div>
+      <div class="talk-collage__group">
+        <input type="checkbox" id="lightbox-createwith" class="talk-lightbox-toggle" aria-label="Expand photo: CreateWith_, Brighton">
+        <label for="lightbox-createwith" class="talk-collage__frame talk-collage__frame--photo" style="--rot: 4deg; --x: 24%; --y: 0%; --delay: 80ms;">
+          <div class="talk-collage__photo">
+            <img src="assets/images/photos/createwith-brighton.jpg" alt="Speaking at the CreateWith_ conference, Brighton" loading="lazy">
+            <span class="talk-collage__caption">CreateWith_, Brighton</span>
+          </div>
+        </label>
+        <label for="lightbox-createwith" class="talk-lightbox-backdrop" aria-hidden="true"></label>
+      </div>
+      <div class="talk-collage__group">
+        <input type="checkbox" id="lightbox-microsoft" class="talk-lightbox-toggle" aria-label="Expand photo: Microsoft magazine">
+        <label for="lightbox-microsoft" class="talk-collage__frame talk-collage__frame--photo" style="--rot: -3deg; --x: 46%; --y: 8%; --delay: 160ms;">
+          <div class="talk-collage__photo">
+            <img src="assets/images/photos/microsoft-magazine.jpg" alt="Featured in Microsoft magazine" loading="lazy">
+            <span class="talk-collage__caption">Microsoft magazine</span>
+          </div>
+        </label>
+        <label for="lightbox-microsoft" class="talk-lightbox-backdrop" aria-hidden="true"></label>
+      </div>
+      <div class="talk-collage__frame" style="--rot: 7deg; --x: 66%; --y: 2%; --delay: 240ms;">
+        <div class="talk-collage__photo">OKTech, Osaka</div>
+      </div>
+      <div class="talk-collage__frame" style="--rot: -8deg; --x: 12%; --y: 30%; --delay: 320ms;">
+        <div class="talk-collage__photo">Vibe Coding Collective</div>
+      </div>
+      <div class="talk-collage__frame" style="--rot: 5deg; --x: 58%; --y: 32%; --delay: 400ms;">
+        <div class="talk-collage__photo">Workshop, Brighton</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="topics">
+    <h2>Topics I cover</h2>
+    <ol class="topic-list">
+      <li>
+        <p><strong>Why AI adoption fails</strong> — for employees, for products and their users. Humanizing AI; the barriers everyone faces: fear, misconceptions, skill gaps; designing AI people can feel good about.</p>
+      </li>
+      <li>
+        <p><strong>Women leadership in the GenAI era.</strong></p>
+      </li>
+      <li>
+        <p><strong>How to build a community as the adoption engine for your product.</strong></p>
+      </li>
+      <li>
+        <p><strong>What crazy things you could ship with GenAI with 0 tech skills</strong> — designers who ship; computer vision; gamification &amp; 3D.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="formats">
+    <h2>Formats</h2>
+    <div class="chip-row">
+      <span class="pill">Inspirational talk</span>
+      <span class="pill">Case-study talk</span>
+      <span class="pill">Hands-on masterclasses</span>
+    </div>
+    <ul class="plain-list talk-formats-detail">
+      <li><p>Agentic coding: Claude Code, Codex, Antigravity</p></li>
+      <li><p>From prompt to app: Lovable, v0, Replit</p></li>
+      <li><p>Media creation: ElevenLabs, Figma Weave</p></li>
     </ul>
+  </section>
+
+  <section id="past-talks">
+    <h2>Past talks &amp; workshops</h2>
+    <ul class="plain-list">
+      <li><p>Workshop on Computer Vision for beginners — OKTech, Osaka, Japan — <a href="https://oktech.jp/events/312103306-vibe-coding-collab" target="_blank">event page</a></p></li>
+      <li><p>What role will sound play in the AI-augmented future life (with ElevenLabs &amp; Tavily) — The Science Museum, London, UK</p></li>
+      <li><p>Podcast: AI Applied Fluency — <a href="https://open.spotify.com/episode/3fhuWfq1UQNzUBTdz8VoOh" target="_blank">listen on Spotify</a></p></li>
+      <li><p>Design thinking for the Vibe Coding era — Createwith_ conference, Brighton, UK</p></li>
+      <li><p>3D Robots Vibe Coding with Dilum Sanjaya — <a href="https://www.youtube.com/watch?v=Amef2nkVccI" target="_blank">watch on YouTube</a></p></li>
+      <li><p>All you should know about GenAI as a Product Manager — Online</p></li>
+      <li><p>Catching the future: the phenomenon of Vibe Coding — commentary for Microsoft magazine</p></li>
+    </ul>
+  </section>
+
+  <section id="reviews">
+    <h2>Reviews</h2>
+    <ul class="quote-list">
+      <li class="quote-card">
+        <p>"…your session was excellent… an excellent beginners guide to the skills needed to vibe code."</p>
+        <p class="quote-card__author">Lucy Palmer, Brand, Content &amp; Marketing Consultant</p>
+      </li>
+      <li class="quote-card">
+        <p>"Fantastic to meet you at the CreateWith AI event in Brighton… a really great session."</p>
+        <p class="quote-card__author">Dr Krishan Kandya</p>
+      </li>
+      <li class="quote-card">
+        <p>"Enjoyed your workshop at the Create With conference in Brighton…"</p>
+        <p class="quote-card__author">Richard Burton</p>
+      </li>
+      <li class="quote-card">
+        <p>"Thank you for giving me an experience that changed my attitude toward tech… an experience I truly want to cherish."</p>
+        <p class="quote-card__author">Workshop attendee, Discord</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="cta">
+    <p>Want me to speak at your event? <a href="https://www.linkedin.com/in/smatsiutsia/" target="_blank">Get in touch on LinkedIn</a>.</p>
   </section>
 </main>
 </div>
