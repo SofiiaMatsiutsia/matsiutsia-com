@@ -122,6 +122,37 @@ ul, ol {
   margin-top: 8px;
 }
 
+/* CV rows, e.g. about.html's Experience/Education sections - company or
+   school left, years right, hairline divider under each row. */
+.cv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cv-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cv-list__who {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.cv-list__role {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.cv-list__year {
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Placeholder image grid, e.g. about.html's drawings section. */
 .placeholder-grid {
   display: grid;
