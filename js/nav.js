@@ -46,11 +46,11 @@
     );
   });
 
-  // Short click sound on the homepage project cards, nav menu links, and
-  // the case-study "Back" link. #container a:has(.css-ga6n8x) matches a
-  // project card (see styles/interactions.css for why that selector);
-  // a[href="index.html"] outside the nav is always a Back link (see the
-  // "Fix inert case-study Back button" commit).
+  // Short click sound on the homepage/design-page project cards, nav
+  // menu links, and the case-study "Back" link. a.work-card matches a
+  // project card (see styles/cards.css); a[href="index.html"] outside
+  // the nav is always a Back link (see the "Fix inert case-study Back
+  // button" commit).
   //
   // These are all same-tab navigations, which normally tear the page
   // (and its audio) down before the ~0.5s clip is audible. A plain click
@@ -82,7 +82,7 @@
     var target =
       event.target.closest &&
       event.target.closest(
-        '#container a:has(.css-ga6n8x), .site-nav__links a, .site-nav__home, a[href="index.html"]'
+        'a.work-card, .site-nav__links a, .site-nav__home, a[href="index.html"]'
       );
     if (!target) return;
 
