@@ -90,16 +90,39 @@
   display: none;
 }
 
+/* Media frame (Figma node 31:86/31:98): a crisp screenshot floats over
+   an ambient blurred backdrop instead of filling the frame edge to
+   edge. The Figma mock uses bespoke art per project for that backdrop;
+   we don't have that art for every case study, so each frame reuses
+   its own screenshot, scaled up and blurred, as its own backdrop -
+   same soft-glow framing, no extra assets needed. */
 .work-card__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   overflow: hidden;
   background: #eee;
+  aspect-ratio: 4 / 3;
 }
 
-.work-card__media img {
-  display: block;
+.work-card__media-backdrop {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(30px) saturate(1.15);
+  transform: scale(1.15);
+}
+
+.work-card__media-shot {
+  position: relative;
+  display: block;
+  width: 88%;
+  border-radius: 6px;
+  box-shadow: 0 16px 32px -14px rgba(0, 0, 0, 0.35);
 }
 
 .work-card__media--placeholder {
@@ -174,7 +197,7 @@
     transition: opacity 200ms ease;
     pointer-events: none;
   }
-  .work-card__media img {
+  .work-card__media-shot {
     transition: transform 300ms ease;
   }
   .work-card__title::after {
@@ -194,7 +217,7 @@
   .work-card:hover::after {
     opacity: 1;
   }
-  .work-card:hover .work-card__media img {
+  .work-card:hover .work-card__media-shot {
     transform: scale(1.05);
   }
   .work-card:hover .work-card__title::after {
@@ -216,7 +239,7 @@
 @media (prefers-reduced-motion: reduce) {
   .work-card,
   .work-card::after,
-  .work-card__media img,
+  .work-card__media-shot,
   .work-card__title::after,
   .work-card__tags > * {
     transition: none;

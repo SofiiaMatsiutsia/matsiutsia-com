@@ -16,6 +16,7 @@
   <script src="js/cursor.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/filters.js" defer></script>
+  <script type="module" src="js/sound.js"></script>
 </head>
 <body>
 <div class="bypass-link"><a href="#main">Skip to content</a></div>
@@ -40,31 +41,23 @@
         <a href="https://x.com/SMatsiutsia" target="_blank" rel="noopener"><img src="assets/images/4f500c58fe414a4fde504c348b71e37e4ecc8318.svg" alt="X" width="20" height="20"></a>
       </div>
     <a class="site-nav__cta" href="mailto:sofiia.matsiutsia@gmail.com" data-copy-cta="true">Copy my email</a>
+    <button class="sound-toggle" type="button" aria-pressed="true" aria-label="Turn sounds off"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="sound-toggle__wave" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="sound-toggle__wave" d="M18.4 5.6a9 9 0 0 1 0 12.8"/><line class="sound-toggle__slash" x1="22" y1="2" x2="2" y2="22"/></svg></button>
   </div>
 </nav>
 <div id="container">
 <main id="main" class="page">
   <h1>Design</h1>
-  <nav class="subnav" aria-label="Sections on this page">
-    <a href="#case-studies">Case studies</a>
-    <a href="#vibe-works">Vibe works</a>
-    <a href="#experiments">Experiments</a>
-    <a href="#declined-projects">Declined projects</a>
-  </nav>
-
-  <section id="case-studies">
-    <h2>Case studies</h2>
-    <div class="work-filters" role="group" aria-label="Filter works by tag">
-      <button type="button" class="work-filters__pill is-active" data-filter="all" aria-pressed="true">All</button>
-      <button type="button" class="work-filters__pill" data-filter="0-1" aria-pressed="false">0 → 1</button>
-      <button type="button" class="work-filters__pill" data-filter="research" aria-pressed="false">Research</button>
-      <button type="button" class="work-filters__pill" data-filter="product-strategy" aria-pressed="false">Product strategy</button>
-      <button type="button" class="work-filters__pill" data-filter="interface-design" aria-pressed="false">Interface design</button>
-      <button type="button" class="work-filters__pill" data-filter="graphic-design" aria-pressed="false">Graphic design</button>
-    </div>
-    <div class="work-grid">
+  <div class="work-filters" role="group" aria-label="Filter works by tag">
+    <button type="button" class="work-filters__pill is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="work-filters__pill" data-filter="0-1" aria-pressed="false">0 → 1</button>
+    <button type="button" class="work-filters__pill" data-filter="research" aria-pressed="false">Research</button>
+    <button type="button" class="work-filters__pill" data-filter="product-strategy" aria-pressed="false">Product strategy</button>
+    <button type="button" class="work-filters__pill" data-filter="interface-design" aria-pressed="false">Interface design</button>
+    <button type="button" class="work-filters__pill" data-filter="graphic-design" aria-pressed="false">Graphic design</button>
+  </div>
+  <div class="work-grid">
       <a class="work-card" href="voyage-monitor.html" target="_self" data-tags="0-1 research product-strategy interface-design">
-        <div class="work-card__media"><img src="assets/images/6bf0b020c5f8604583de6e5552ca4bea977c0d0c.png" alt="" loading="lazy"></div>
+        <div class="work-card__media"><img class="work-card__media-backdrop" src="assets/images/6bf0b020c5f8604583de6e5552ca4bea977c0d0c.png" alt="" aria-hidden="true" loading="lazy"><img class="work-card__media-shot" src="assets/images/6bf0b020c5f8604583de6e5552ca4bea977c0d0c.png" alt="" loading="lazy"></div>
         <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Voyage Monitor Dashboard</h3></div>
         <p class="work-card__desc">Real-time dashboard with vessel KPIs, map, compass, and sensor data</p>
         <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span></div>
@@ -76,46 +69,30 @@
         <div class="work-card__tags"><span class="work-card__tag">Research</span><span class="work-card__tag">Interface design</span></div>
       </a>
       <a class="work-card" href="internal-panel.html" target="_self" data-tags="research product-strategy interface-design">
-        <div class="work-card__media"><img src="assets/images/fa24cc5d3644c58624d98e55bcc397e5cc7a955d.png" alt="" loading="lazy"></div>
+        <div class="work-card__media"><img class="work-card__media-backdrop" src="assets/images/fa24cc5d3644c58624d98e55bcc397e5cc7a955d.png" alt="" aria-hidden="true" loading="lazy"><img class="work-card__media-shot" src="assets/images/fa24cc5d3644c58624d98e55bcc397e5cc7a955d.png" alt="" loading="lazy"></div>
         <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Unified internal panel</h3></div>
         <p class="work-card__desc">Last 3 years we unified scattered internal workflows into a single Internal Panel, making life easier for Support, Sales, and Finance.</p>
         <div class="work-card__tags"><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span></div>
       </a>
       <a class="work-card" href="team-lift-ai.html" target="_self" data-tags="0-1 research product-strategy interface-design graphic-design">
-        <div class="work-card__media"><img src="assets/images/46936eb3197a6327cdcbc89f762f3ec7e0e223d5.png" alt="" loading="lazy"></div>
+        <div class="work-card__media"><img class="work-card__media-backdrop" src="assets/images/46936eb3197a6327cdcbc89f762f3ec7e0e223d5.png" alt="" aria-hidden="true" loading="lazy"><img class="work-card__media-shot" src="assets/images/46936eb3197a6327cdcbc89f762f3ec7e0e223d5.png" alt="" loading="lazy"></div>
         <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">AI-powered skills intelligence platform for team management</h3></div>
         <p class="work-card__desc">Web platform that connects to a company’s existing data sources and builds a private knowledge graph of every employee’s actual capabilities.</p>
         <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
       </a>
       <a class="work-card" href="housing-anywhere.html" target="_self" data-tags="interface-design graphic-design">
-        <div class="work-card__media"><img src="assets/images/4c48172205b0da9429f0917ff654c0818ad4458b.png" alt="" loading="lazy"></div>
+        <div class="work-card__media"><img class="work-card__media-backdrop" src="assets/images/4c48172205b0da9429f0917ff654c0818ad4458b.png" alt="" aria-hidden="true" loading="lazy"><img class="work-card__media-shot" src="assets/images/4c48172205b0da9429f0917ff654c0818ad4458b.png" alt="" loading="lazy"></div>
         <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Housing Anywhere</h3></div>
         <p class="work-card__desc">A global rental platform that connects tenants with landlords for mid- to long-term stays.</p>
         <div class="work-card__tags"><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
       </a>
       <a class="work-card" href="https://vibecoders.global/" target="_blank" rel="noopener" data-tags="0-1 product-strategy interface-design graphic-design">
-        <div class="work-card__media"><img src="assets/images/8b060b6a413919f77cd4062fa4a0152e0ae03ff6.png" alt="" loading="lazy"></div>
+        <div class="work-card__media"><img class="work-card__media-backdrop" src="assets/images/8b060b6a413919f77cd4062fa4a0152e0ae03ff6.png" alt="" aria-hidden="true" loading="lazy"><img class="work-card__media-shot" src="assets/images/8b060b6a413919f77cd4062fa4a0152e0ae03ff6.png" alt="" loading="lazy"></div>
         <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Vibe Coding Collective</h3></div>
         <p class="work-card__desc">Have I told that I run AI community across the world? I also do the whole branding design there.</p>
         <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
       </a>
     </div>
-  </section>
-
-  <section id="vibe-works">
-    <h2>Vibe works</h2>
-    <p>Placeholder — projects built with AI-assisted ("vibe coding") workflows.</p>
-  </section>
-
-  <section id="experiments">
-    <h2>Experiments</h2>
-    <p>Placeholder — smaller explorations and experiments with GenAI tools.</p>
-  </section>
-
-  <section id="declined-projects">
-    <h2>Declined projects</h2>
-    <p>Placeholder — projects considered and passed on, with notes on why.</p>
-  </section>
 </main>
 </div>
 <footer class="site-footer">
