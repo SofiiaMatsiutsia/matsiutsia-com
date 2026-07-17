@@ -68,6 +68,7 @@
 
 .site-nav__home,
 .site-nav__toggle,
+.site-nav__social,
 .site-nav__cta {
   position: relative;
   z-index: 2; /* stays above the fixed mobile panel, which sits at z-index:1 */
@@ -118,6 +119,25 @@ a.site-nav__cta {
   white-space: nowrap;
 }
 
+/* Desktop-only header icons (LinkedIn/X), left of the CTA. Hidden below
+   800px - the mobile overlay panel already carries the same links via
+   .site-nav__panel-social. */
+.site-nav__social {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-nav__social a {
+  display: inline-flex;
+}
+
+.site-nav__social img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
 .site-nav__toggle {
   display: none;
   align-items: center;
@@ -151,7 +171,8 @@ a.site-nav__cta {
 @media (hover: hover) and (pointer: fine) {
   .site-nav__links a,
   .site-nav__cta,
-  .site-nav__toggle {
+  .site-nav__toggle,
+  .site-nav__social a {
     transition: background-color 150ms ease, opacity 150ms ease;
   }
   .site-nav__links a:hover {
@@ -163,23 +184,29 @@ a.site-nav__cta {
   .site-nav__toggle:hover {
     background: #eee;
   }
+  .site-nav__social a:hover {
+    opacity: 0.6;
+  }
 }
 
 .site-nav__links a:active,
 .site-nav__cta:active,
-.site-nav__toggle:active {
+.site-nav__toggle:active,
+.site-nav__social a:active {
   transform: scale(0.97);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-nav__links a,
   .site-nav__cta,
-  .site-nav__toggle {
+  .site-nav__toggle,
+  .site-nav__social a {
     transition: none;
   }
   .site-nav__links a:active,
   .site-nav__cta:active,
-  .site-nav__toggle:active {
+  .site-nav__toggle:active,
+  .site-nav__social a:active {
     transform: none;
   }
 }
@@ -196,6 +223,16 @@ a.site-nav__cta {
   }
   .site-nav__toggle {
     display: none;
+  }
+  .site-nav__social {
+    display: flex;
+    margin-left: auto;
+  }
+  /* The auto margin above already pushes the icons + CTA group to the
+     right - a second auto margin here would split the leftover space
+     between both, leaving a gap between the icons and the CTA. */
+  a.site-nav__cta {
+    margin-left: 0;
   }
 }
 
@@ -322,95 +359,6 @@ a.site-nav__cta {
     align-items: stretch;
   }
 
-  /* index.html only: lay the "Selected works" row's 6 project cards out
-     in a 2-column masonry instead of one long single-column stack. The
-     generated markup gives this row no class unique to it - .css-zfhu0q
-     is reused for unrelated flex columns on the other pages - so
-     .selected-works-grid is a hand-added marker class on the row's two
-     (800px and 1280px) breakpoint copies in index.html itself, rather
-     than a :has() selector here. An earlier :has(> a[href=...]) version
-     worked for the first few rules but silently failed to apply for the
-     rest - some rule-count cap on repeating the same :has() clause,
-     apparently specific to this preview sandbox rather than real
-     browsers, but a plain class sidesteps it either way. */
-  #container > [data-width="1280"] .selected-works-grid {
-    display: block;
-    column-count: 2;
-    column-gap: 20px;
-
-    /* The "Selected works" heading is this row's first child - column-span
-       pulls it out above the 2-column flow instead of getting stuck at the
-       top of column 1 alongside the first card. */
-    > .css-i5ewjm {
-      column-span: all;
-      margin-bottom: 20px;
-    }
-
-    > a {
-      /* Card is itself a flex column with align-items:flex-start, which
-         shrink-fits every child (including the image frame below) to its
-         content size instead of the card's own width - same indeterminate-
-         width problem the two flex wrappers above the grid already had.
-         Stretch it so the max-width:100% further down actually resolves
-         against a real number instead of an indeterminate parent width. */
-      align-items: stretch;
-      break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-      margin-bottom: 20px;
-
-      /* Every card has a uniform 20px padding (.css-830mls, or nested one
-         level deeper in .css-jbecoi for the internal-panel card, which is
-         structured slightly differently) with no border or background of
-         its own to justify it - at the old 860px single-column width it
-         read as normal breathing room, but at ~420px it just reads as an
-         unexplained gap between the "Selected works" heading and every
-         card's content. Zeroing it lines cards up flush with the heading;
-         the gap between a card's own title/tags/image is unaffected,
-         since that comes from gap:20px on the same element, not padding. */
-      &.css-830mls {
-        padding: 0;
-      }
-
-      .css-jbecoi {
-        padding: 0;
-        /* internal-panel.html's version of the same flex-start shrink-fit
-           issue as .css-x82mwy below - this is the flex container that
-           directly parents its image frame, one level higher up than for
-           the other 5 cards. */
-        align-items: stretch;
-      }
-
-      /* Each card's tag row (.css-kv9s57) is nowrap in the machine CSS,
-         sized for the old full-width (860px) card - harmless there since
-         every tag row fit on one line, but the halved ~420px column above
-         is too narrow for the longest row (team-lift-ai's 5 tags) and it
-         silently overflows into the next column. Wrapping is a no-op for
-         the shorter rows that already fit, so it's safe for all 6 cards. */
-      .css-kv9s57 {
-        flex-wrap: wrap;
-      }
-
-      /* The image-frame wrapper is itself another flex-start column (same
-         shrink-to-fit issue as the card above), one level in from the
-         card, on 2 of the 6 cards (the other 4 already carry width:100%
-         via .css-j9f0op and don't need this). */
-      .css-x82mwy {
-        align-items: stretch;
-      }
-
-      /* The preview screenshot on 2 of the 6 cards (.css-sqs03) is a
-         fixed 600x350px frame sized for the old 860px card - fit fine
-         there, but wider than the ~420-460px column now, so the card's
-         overflow:clip was silently cropping the right edge of the image
-         instead of scaling it down. Same fix as the 3 case-study-page
-         screenshots above. */
-      .css-sqs03 {
-        max-width: 100%;
-        aspect-ratio: 600 / 350;
-        height: auto;
-      }
-    }
-  }
 }
 
 /* Tablet breakpoint (800-1279px): content sat flush against the viewport
@@ -437,53 +385,6 @@ a.site-nav__cta {
     align-items: stretch;
   }
 
-  /* index.html only: same 2-column masonry as the desktop breakpoint
-     above - see the comments there, including why .selected-works-grid
-     is a hand-added class rather than a :has() selector. */
-  #container > [data-width="800"] .selected-works-grid {
-    display: block;
-    column-count: 2;
-    column-gap: 20px;
-
-    > .css-i5ewjm {
-      column-span: all;
-      margin-bottom: 20px;
-    }
-
-    > a {
-      align-items: stretch;
-      break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-      margin-bottom: 20px;
-
-      &.css-830mls {
-        padding: 0;
-      }
-
-      .css-jbecoi {
-        padding: 0;
-        /* internal-panel.html's version of the same flex-start shrink-fit
-           issue as .css-x82mwy below - this is the flex container that
-           directly parents its image frame, one level higher up than for
-           the other 5 cards. */
-        align-items: stretch;
-      }
-
-      .css-kv9s57 {
-        flex-wrap: wrap;
-      }
-
-      .css-x82mwy {
-        align-items: stretch;
-      }
-
-      .css-sqs03 {
-        max-width: 100%;
-        aspect-ratio: 600 / 350;
-        height: auto;
-      }
-    }
-  }
 }
 
 /* 3 of the 4 case studies have one screenshot at the 1280 breakpoint

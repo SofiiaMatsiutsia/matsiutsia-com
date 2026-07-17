@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="styles/cursor.css">
   <link rel="stylesheet" href="styles/nav.css">
   <link rel="stylesheet" href="styles/pages.css">
+  <link rel="stylesheet" href="styles/cards.css">
   <link rel="stylesheet" href="styles/motion.css">
   <script src="js/cursor.js" defer></script>
   <script src="js/nav.js" defer></script>
+  <script src="js/filters.js" defer></script>
 </head>
 <body>
 <div class="bypass-link"><a href="#main">Skip to content</a></div>
@@ -26,7 +28,6 @@
         <li><a href="about.html">About</a></li>
         <li><a href="design.html" aria-current="page">Design</a></li>
         <li><a href="talks.html">Talks</a></li>
-        <li><a href="offerings.html">Offerings</a></li>
       </ul>
       <div class="site-nav__panel-social">
         <a href="https://www.instagram.com/smatsyutsya/" target="_blank"><img src="assets/images/d34c44c4f6b6107a31df9e853d9039bf00c56e98.svg" alt="Instagram" width="20" height="20"></a>
@@ -34,6 +35,10 @@
         <a href="https://x.com/SMatsiutsia" target="_blank"><img src="assets/images/4f500c58fe414a4fde504c348b71e37e4ecc8318.svg" alt="X" width="20" height="20"></a>
       </div>
     </div>
+      <div class="site-nav__social">
+        <a href="https://www.linkedin.com/in/smatsiutsia/" target="_blank" rel="noopener"><img src="assets/images/bc331cf193c0122219613db5dbbe5bdd9e957296.svg" alt="LinkedIn" width="20" height="20"></a>
+        <a href="https://x.com/SMatsiutsia" target="_blank" rel="noopener"><img src="assets/images/4f500c58fe414a4fde504c348b71e37e4ecc8318.svg" alt="X" width="20" height="20"></a>
+      </div>
     <a class="site-nav__cta" href="mailto:sofiia.matsiutsia@gmail.com" data-copy-cta="true">Copy my email</a>
   </div>
 </nav>
@@ -49,32 +54,52 @@
 
   <section id="case-studies">
     <h2>Case studies</h2>
-    <ul class="card-list">
-      <li>
-        <a href="voyage-monitor.html">
-          <h3>Voyage Monitor Dashboard</h3>
-          <p>Real-time dashboard with vessel KPIs, map, compass, and sensor data</p>
-        </a>
-      </li>
-      <li>
-        <a href="internal-panel.html">
-          <h3>Unified internal panel</h3>
-          <p>Unifying scattered internal workflows into a single Admin Panel for Support, Sales, and Finance</p>
-        </a>
-      </li>
-      <li>
-        <a href="team-lift-ai.html">
-          <h3>AI-powered Skills Intelligence Platform for Team Management</h3>
-          <p>A platform for managing and developing team skills with AI assistance</p>
-        </a>
-      </li>
-      <li>
-        <a href="housing-anywhere.html">
-          <h3>Housing Anywhere | Mobile</h3>
-          <p>Exploring how a full rebranding could transform the experience</p>
-        </a>
-      </li>
-    </ul>
+    <div class="work-filters" role="group" aria-label="Filter works by tag">
+      <button type="button" class="work-filters__pill is-active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="work-filters__pill" data-filter="0-1" aria-pressed="false">0 → 1</button>
+      <button type="button" class="work-filters__pill" data-filter="research" aria-pressed="false">Research</button>
+      <button type="button" class="work-filters__pill" data-filter="product-strategy" aria-pressed="false">Product strategy</button>
+      <button type="button" class="work-filters__pill" data-filter="interface-design" aria-pressed="false">Interface design</button>
+      <button type="button" class="work-filters__pill" data-filter="graphic-design" aria-pressed="false">Graphic design</button>
+    </div>
+    <div class="work-grid">
+      <a class="work-card" href="voyage-monitor.html" target="_self" data-tags="0-1 research product-strategy interface-design">
+        <div class="work-card__media"><img src="assets/images/6bf0b020c5f8604583de6e5552ca4bea977c0d0c.png" alt="" loading="lazy"></div>
+        <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Voyage Monitor Dashboard</h3></div>
+        <p class="work-card__desc">Real-time dashboard with vessel KPIs, map, compass, and sensor data</p>
+        <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span></div>
+      </a>
+      <a class="work-card" href="https://www.linkedin.com/posts/smatsiutsia_how-we-designers-test-ideas-10000x-faster-activity-7421962190988943360-BrU-?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACC8G0QBiWeI60DBzFjNyI_r9bzeq7yk6Vs" target="_blank" rel="noopener" data-tags="research interface-design">
+        <div class="work-card__media work-card__media--placeholder"></div>
+        <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">AI-assisted filtering for search</h3></div>
+        <p class="work-card__desc">Designed AI-assisted filtering to let user control card properties, inspired by the concept of the “Malleable Interfaces”. Non-conversational search alternative, reduced cognitive load vs. natural language prompts</p>
+        <div class="work-card__tags"><span class="work-card__tag">Research</span><span class="work-card__tag">Interface design</span></div>
+      </a>
+      <a class="work-card" href="internal-panel.html" target="_self" data-tags="research product-strategy interface-design">
+        <div class="work-card__media"><img src="assets/images/fa24cc5d3644c58624d98e55bcc397e5cc7a955d.png" alt="" loading="lazy"></div>
+        <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Unified internal panel</h3></div>
+        <p class="work-card__desc">Last 3 years we unified scattered internal workflows into a single Internal Panel, making life easier for Support, Sales, and Finance.</p>
+        <div class="work-card__tags"><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span></div>
+      </a>
+      <a class="work-card" href="team-lift-ai.html" target="_self" data-tags="0-1 research product-strategy interface-design graphic-design">
+        <div class="work-card__media"><img src="assets/images/46936eb3197a6327cdcbc89f762f3ec7e0e223d5.png" alt="" loading="lazy"></div>
+        <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">AI-powered skills intelligence platform for team management</h3></div>
+        <p class="work-card__desc">Web platform that connects to a company’s existing data sources and builds a private knowledge graph of every employee’s actual capabilities.</p>
+        <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
+      </a>
+      <a class="work-card" href="housing-anywhere.html" target="_self" data-tags="interface-design graphic-design">
+        <div class="work-card__media"><img src="assets/images/4c48172205b0da9429f0917ff654c0818ad4458b.png" alt="" loading="lazy"></div>
+        <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Housing Anywhere</h3></div>
+        <p class="work-card__desc">A global rental platform that connects tenants with landlords for mid- to long-term stays.</p>
+        <div class="work-card__tags"><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
+      </a>
+      <a class="work-card" href="https://vibecoders.global/" target="_blank" rel="noopener" data-tags="0-1 product-strategy interface-design graphic-design">
+        <div class="work-card__media"><img src="assets/images/8b060b6a413919f77cd4062fa4a0152e0ae03ff6.png" alt="" loading="lazy"></div>
+        <div class="work-card__head"><span class="work-card__logo" aria-hidden="true"></span><h3 class="work-card__title">Vibe Coding Collective</h3></div>
+        <p class="work-card__desc">Have I told that I run AI community across the world? I also do the whole branding design there.</p>
+        <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
+      </a>
+    </div>
   </section>
 
   <section id="vibe-works">

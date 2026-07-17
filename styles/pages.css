@@ -93,6 +93,12 @@ ul, ol {
   color: rgba(0, 0, 0, 0.7);
 }
 
+/* Consecutive paragraphs, e.g. about.html's intro - h1/h2/p all have
+   margin:0 from the reset above, so adjacent <p>s need their own gap. */
+.page p + p {
+  margin-top: 16px;
+}
+
 .page p a {
   color: #ff0e00;
   text-decoration: underline;
@@ -133,6 +139,37 @@ ul, ol {
   .placeholder-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Photo variant, e.g. about.html's Vibe Coding Collective section - same
+   dashed placeholder styling but 4:3 instead of square, since these will
+   be replaced with real event photos rather than square drawings. */
+.placeholder-grid--photos div {
+  aspect-ratio: 4 / 3;
+}
+
+/* Sponsor/partner wordmarks, e.g. about.html's "supported by" row.
+   Monochrome, fixed 32px height per the Figma spec regardless of each
+   mark's native proportions. */
+.logo-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.logo-row img {
+  display: block;
+  height: 32px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.65;
+}
+
+.logo-row__more {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .page footer {
