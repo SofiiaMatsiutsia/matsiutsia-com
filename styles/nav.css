@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  max-width: 900px;
+  max-width: none;
   margin: 0 auto;
   padding: 12px 20px;
 }
@@ -402,6 +402,12 @@ a.site-nav__cta {
     align-items: stretch;
   }
 
+  /* index.html only (body.home): its export block is now just the intro
+     text section, so it follows the site's 600px text-column width while
+     the case-study pages keep the 900px cap above. */
+  body.home #container > [data-width="1280"] {
+    max-width: 600px;
+  }
 }
 
 /* Tablet breakpoint (800-1279px): content sat flush against the viewport
@@ -428,6 +434,10 @@ a.site-nav__cta {
     align-items: stretch;
   }
 
+  /* index.html only: same 600px text-column cap as the 1280 block. */
+  body.home #container > [data-width="800"] {
+    max-width: 600px;
+  }
 }
 
 /* 3 of the 4 case studies have one screenshot at the 1280 breakpoint
@@ -469,7 +479,7 @@ html.nav-open {
 }
 
 .site-footer__inner {
-  max-width: 900px;
+  max-width: none;
   margin: 0 auto;
   padding: 24px 20px;
   display: flex;

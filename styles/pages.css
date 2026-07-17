@@ -69,9 +69,15 @@ ul, ol {
 }
 
 .page {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 48px 20px 96px;
+}
+
+/* Full-width variant: pages whose content (e.g. the work-card grid on
+   design.html) should stretch edge-to-edge with the same 20px margins. */
+.page--full {
+  max-width: none;
 }
 
 .page h1 {
