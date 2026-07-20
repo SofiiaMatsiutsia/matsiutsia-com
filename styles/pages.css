@@ -70,7 +70,7 @@ ul, ol {
 
 .page {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   padding: 48px 20px 96px;
 }
 
@@ -178,12 +178,14 @@ ul, ol {
   font-variant-numeric: tabular-nums;
 }
 
-/* Photo grid, e.g. about.html's Vibe Coding Collective and Hobbies photos. */
+/* Photo grid, e.g. about.html's Vibe Coding Collective and Hobbies photos.
+   2 columns (not 3) so each photo renders large enough to actually read. */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-top: 16px;
+  margin-bottom: 24px;
 }
 
 .photo-grid img {
@@ -194,14 +196,8 @@ ul, ol {
   border-radius: 8px;
 }
 
-@media (max-width: 480px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 /* Sponsor/partner wordmarks, e.g. about.html's "supported by" row.
-   Monochrome, fixed 32px height per the Figma spec regardless of each
+   Monochrome, fixed 50px height per the Figma spec regardless of each
    mark's native proportions. */
 .logo-row {
   display: flex;
@@ -213,7 +209,7 @@ ul, ol {
 
 .logo-row img {
   display: block;
-  height: 32px;
+  height: 50px;
   width: auto;
   filter: grayscale(1);
   opacity: 0.65;
