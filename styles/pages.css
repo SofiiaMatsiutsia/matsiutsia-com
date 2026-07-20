@@ -70,7 +70,7 @@ ul, ol {
 
 .page {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   padding: 48px 20px 96px;
 }
 
@@ -105,9 +105,34 @@ ul, ol {
   margin-top: 16px;
 }
 
+.page p + .quote-card {
+  margin-top: 24px;
+}
+
 .page p a {
   color: #ff0e00;
   text-decoration: underline;
+}
+
+/* Bordered testimonial card, e.g. about.html's single quote and
+   talks.html's review grid (wrapped there in .quote-list). */
+.quote-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+}
+
+.quote-card p:first-child {
+  font-family: "EB Garamond:Regular", serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.quote-card__author {
+  margin-top: 12px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .page > section {
@@ -122,40 +147,57 @@ ul, ol {
   margin-top: 8px;
 }
 
-/* Placeholder image grid, e.g. about.html's drawings section. */
-.placeholder-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 16px;
+/* CV rows, e.g. about.html's Experience/Education sections - company or
+   school left, years right, hairline divider under each row. */
+.cv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.placeholder-grid div {
-  aspect-ratio: 1;
-  border: 1px dashed #000;
-  border-radius: 8px;
+.cv-list li {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cv-list__who {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.cv-list__role {
   color: rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 480px) {
-  .placeholder-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cv-list__year {
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Photo variant, e.g. about.html's Vibe Coding Collective section - same
-   dashed placeholder styling but 4:3 instead of square, since these will
-   be replaced with real event photos rather than square drawings. */
-.placeholder-grid--photos div {
+/* Photo grid, e.g. about.html's Vibe Coding Collective and Hobbies photos.
+   2 columns (not 3) so each photo renders large enough to actually read. */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.photo-grid img {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 /* Sponsor/partner wordmarks, e.g. about.html's "supported by" row.
-   Monochrome, fixed 32px height per the Figma spec regardless of each
+   Monochrome, fixed 50px height per the Figma spec regardless of each
    mark's native proportions. */
 .logo-row {
   display: flex;
@@ -167,7 +209,7 @@ ul, ol {
 
 .logo-row img {
   display: block;
-  height: 32px;
+  height: 50px;
   width: auto;
   filter: grayscale(1);
   opacity: 0.65;

@@ -85,25 +85,6 @@ article.work-card:active {
   gap: 16px;
 }
 
-.quote-card {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 16px;
-  background: #fff;
-}
-
-.quote-card p:first-child {
-  font-family: "EB Garamond:Regular", serif;
-  font-size: 18px;
-  line-height: 1.4;
-}
-
-.quote-card__author {
-  margin-top: 12px;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.5);
-}
-
 @media (max-width: 800px) {
   .quote-list {
     grid-template-columns: 1fr;
