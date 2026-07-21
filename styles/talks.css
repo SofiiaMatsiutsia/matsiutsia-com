@@ -1,0 +1,57 @@
+/* Page-specific styles for talks.html: hero photo card, past-talk cards
+   (both reuse .work-card from cards.css, which this page also loads),
+   and review quote cards. Everything else on this page (headings, pills,
+   plain lists) comes from pages.css. */
+
+/* Single-column stack of past-talk cards inside the 600px text column.
+   Deliberately NOT .work-grid, whose >=800px 2-column masonry would
+   split this narrow column in two. */
+.talk-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Photo variant of the work-card media frame: real photographs fill the
+   frame edge to edge instead of the blurred-backdrop + floating-shot
+   treatment built for UI screenshots. */
+.work-card__media--photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Non-clickable past-talk entries are <article class="work-card">: same
+   card visuals, none of the link affordances (lift, shadow, arrow). */
+article.work-card,
+article.work-card:active {
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  article.work-card:hover {
+    transform: none;
+  }
+  article.work-card::after,
+  article.work-card .work-card__title::after {
+    content: none;
+  }
+  article.work-card:hover .work-card__tags > * {
+    transform: none;
+  }
+}
+
+/* Reviews, rendered as styled text quote cards rather than screenshots. */
+.quote-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 800px) {
+  .quote-list {
+    grid-template-columns: 1fr;
+  }
+}

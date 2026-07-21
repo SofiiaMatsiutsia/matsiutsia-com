@@ -1,0 +1,81 @@
+/* Site-wide custom cursor: small dot by default, morphs into a labeled
+   pill over project cards and a ring over other links/buttons. Only
+   activates on devices with a real mouse (js/cursor.js gates on
+   (hover: hover) and (pointer: fine) before adding html.has-cursor), so
+   touch/pen devices and no-JS visitors keep the native cursor. */
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 150ms ease;
+}
+
+.cursor.is-visible {
+  opacity: 1;
+}
+
+.cursor__shape {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d2b52;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  transition: box-shadow 180ms ease, transform 100ms ease;
+  /* Pinned at a permanent max radius (always a circle/stadium shape,
+     never square corners) rather than animated - a large radius that's
+     itself springing gets clamped to 50% of the box by the browser as
+     width/height animate past it at different rates, which made the
+     corners visibly flicker between round and square mid-transition.
+     A fixed max avoids the mismatch entirely.
+     width, height, padding and the left/top offsets are set directly by
+     js/cursor.js on every animation frame (a damped spring, not a CSS
+     transition) - see that file's header comment for why: a plain CSS
+     transition can't freeze the pill's left edge while it grows, which
+     is what makes it expand left-to-right. */
+}
+
+.cursor__label {
+  display: block;
+  white-space: nowrap;
+  font-family: "Inter:Semi Bold", sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 150ms ease 80ms;
+}
+
+/* Pointer: hovering a plain link/button - solid circle with a soft outer
+   ring (box-shadow spread approximates the two-circle SVG: solid r=8
+   fill plus a stroke-width:3 ring centered at r=9.5, i.e. the 8-11px band). */
+.cursor[data-mode="link"] .cursor__shape {
+  box-shadow: 0 0 0 3px rgba(13, 43, 82, 0.2);
+}
+
+.cursor[data-mode="label"] .cursor__label {
+  opacity: 1;
+}
+
+.cursor[data-pressed] .cursor__shape {
+  transform: scale(0.88);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .cursor__shape,
+  .cursor__label {
+    transition: none;
+  }
+}

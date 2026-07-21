@@ -1,0 +1,7 @@
+.DS_Store
+
+# Full-resolution source photos - only the resized web copies
+# (assets/images/photos/*.jpg with kebab-case names) are committed.
+assets/images/photos/Create_With_2026_Beth_Moseley_Photography_409.jpg
+assets/images/photos/Microsoft_Magazine_2025.jpg
+assets/images/photos/Science_Museum_11labs.jpg
