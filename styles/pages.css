@@ -26,7 +26,7 @@ body {
   margin: 0;
   background: #f6f6f6;
   color: #000;
-  font-family: "Inter:Regular", sans-serif;
+  font-family: "Figtree:Regular", sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -70,7 +70,7 @@ ul, ol {
 
 .page {
   max-width: 600px;
-  margin: 0;
+  margin: 0 auto;
   padding: 48px 20px 96px;
 }
 
@@ -197,7 +197,7 @@ ul, ol {
 }
 
 /* Sponsor/partner wordmarks, e.g. about.html's "supported by" row.
-   Monochrome, fixed 50px height per the Figma spec regardless of each
+   Monochrome, fixed 22px height per the Figma spec regardless of each
    mark's native proportions. */
 .logo-row {
   display: flex;
@@ -209,7 +209,7 @@ ul, ol {
 
 .logo-row img {
   display: block;
-  height: 50px;
+  height: 22px;
   width: auto;
   filter: grayscale(1);
   opacity: 0.65;

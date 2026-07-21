@@ -21,7 +21,7 @@
   z-index: 1000; /* stays below .bypass-link's 10000 */
   background: #f6f6f6;
   border-bottom: 1px solid #eee;
-  font-family: "Inter:Regular", sans-serif;
+  font-family: "Figtree:Regular", sans-serif;
   font-size: 14px;
   color: #000;
   animation: site-nav-fade-in 500ms ease-out;
@@ -115,7 +115,8 @@ a.site-nav__cta {
   padding: 8px 16px;
   background: #000;
   color: #fff;
-  font-family: "Inter:Semi Bold", sans-serif;
+  font-family: "Figtree:Regular", sans-serif;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -473,7 +474,7 @@ html.nav-open {
 .site-footer {
   background: #f6f6f6;
   border-top: 1px solid #eee;
-  font-family: "Inter:Regular", sans-serif;
+  font-family: "Figtree:Regular", sans-serif;
   font-size: 14px;
   color: #000;
 }
@@ -532,7 +533,7 @@ a.site-footer__email {
   z-index: 1100; /* above the nav (1000), below .bypass-link (10000) */
   background: #000;
   color: #fff;
-  font-family: "Inter:Regular", sans-serif;
+  font-family: "Figtree:Regular", sans-serif;
   font-size: 14px;
   line-height: 1.3;
   padding: 10px 16px;

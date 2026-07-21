@@ -136,16 +136,35 @@
 }
 
 .work-card__logo {
+  display: block;
   width: 20px;
   height: 20px;
-  border-radius: 5px;
-  background: #eee;
   flex-shrink: 0;
+  object-fit: contain;
 }
 
-.work-card__title {
-  font-family: "EB Garamond:Medium", serif;
-  font-weight: 500;
+/* Fallback mark for cards without a company logo (e.g. external posts with
+   no dedicated case study): the site's own logo, recolored via mask since
+   the source SVG is hardcoded green and <img> can't be recolored with CSS. */
+.work-card__logo--mark {
+  background-color: #343434;
+  -webkit-mask-image: url("../assets/logo/matsiutsia_logo.svg");
+  mask-image: url("../assets/logo/matsiutsia_logo.svg");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Selector scoped beyond a single class so it beats pages.css's ".page h2"
+   rule (which otherwise leaks a 16px margin-bottom onto talks.html's hero
+   card, whose title happens to be an h2 instead of h3 - inflating the gap
+   to the description well past the card's own outer padding). */
+.work-card__head .work-card__title {
+  font-family: "EB Garamond:Regular", serif;
+  font-weight: 400;
   font-size: 24px;
   line-height: 1.2;
   letter-spacing: 0.48px;
@@ -246,6 +265,14 @@
   }
 }
 
+/* Wraps the h1 + filter row on design.html: unlike .page--full's work-grid
+   below it, this part reads as text, so it gets the same 600px centered
+   column as every other page's heading instead of stretching full-bleed. */
+.page-intro {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* Tag filter row - design.html only (guarded there by JS on presence
    of .work-filters). Cards keep their own tags visible regardless. */
 .work-filters {
@@ -265,7 +292,7 @@
   border: 1px solid #000;
   border-radius: 8px;
   padding: 8px 12px;
-  font-family: "Inter:Regular", sans-serif;
+  font-family: "Figtree:Regular", sans-serif;
   font-size: 14px;
   color: inherit;
   cursor: pointer;

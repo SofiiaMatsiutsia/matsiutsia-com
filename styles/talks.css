@@ -1,7 +1,7 @@
 /* Page-specific styles for talks.html: hero photo card, past-talk cards
    (both reuse .work-card from cards.css, which this page also loads),
-   topics list, format chips and review quote cards. Everything else on
-   this page (headings, subnav, pills, plain lists) comes from pages.css. */
+   and review quote cards. Everything else on this page (headings, pills,
+   plain lists) comes from pages.css. */
 
 /* Single-column stack of past-talk cards inside the 600px text column.
    Deliberately NOT .work-grid, whose >=800px 2-column masonry would
@@ -41,41 +41,6 @@ article.work-card:active {
   article.work-card:hover .work-card__tags > * {
     transform: none;
   }
-}
-
-/* Topics I cover - numbered editorial list. */
-.topic-list {
-  counter-reset: topic;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.topic-list li {
-  counter-increment: topic;
-  position: relative;
-  padding-left: 36px;
-}
-
-.topic-list li::before {
-  content: counter(topic);
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-family: "EB Garamond:Regular", serif;
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-/* Formats chip row, reusing .pill from pages.css. */
-.chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.talk-formats-detail {
-  margin-top: 16px;
 }
 
 /* Reviews, rendered as styled text quote cards rather than screenshots. */
