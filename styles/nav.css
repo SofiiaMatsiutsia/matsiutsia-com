@@ -110,7 +110,10 @@
 a.site-nav__cta {
   margin-left: auto;
   flex-shrink: 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   border-radius: 8px;
   padding: 8px 16px;
   background: #000;
@@ -439,6 +442,23 @@ a.site-nav__cta {
   body.home #container > [data-width="800"] {
     max-width: 600px;
   }
+}
+
+/* index.html only: the machine CSS renders the intro bio dimmer (60%-black
+   via opacity, which also washes out the "Vibe Coding Collective" link)
+   and smaller on the mobile breakpoint than the hand-written pages'
+   .page p (styles/pages.css: 16px, 70%-black) - match that here so the
+   homepage intro reads the same as about.html/talks.html. Prefixed with
+   #container to match the machine CSS's own "#container .css-xxxxxx"
+   specificity (see comment above), same as the rules below. */
+body.home #container .css-450udk {
+  font-size: 16px;
+}
+
+body.home #container .css-z43uy7 {
+  opacity: 1;
+  color: rgba(0, 0, 0, 0.7);
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.7);
 }
 
 /* 3 of the 4 case studies have one screenshot at the 1280 breakpoint
