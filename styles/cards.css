@@ -90,39 +90,19 @@
   display: none;
 }
 
-/* Media frame (Figma node 31:86/31:98): a crisp screenshot floats over
-   an ambient blurred backdrop instead of filling the frame edge to
-   edge. The Figma mock uses bespoke art per project for that backdrop;
-   we don't have that art for every case study, so each frame reuses
-   its own screenshot, scaled up and blurred, as its own backdrop -
-   same soft-glow framing, no extra assets needed. */
 .work-card__media {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative; /* positioning anchor for talks.css's .work-card__media--photo img (position:absolute; inset:0) */
   border-radius: 8px;
   overflow: hidden;
   background: #eee;
   aspect-ratio: 4 / 3;
 }
 
-.work-card__media-backdrop {
-  position: absolute;
-  inset: 0;
+.work-card__media-shot {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(30px) saturate(1.15);
-  transform: scale(1.15);
-}
-
-.work-card__media-shot {
-  position: relative;
-  display: block;
-  width: 88%;
-  border-radius: 6px;
-  box-shadow: 0 16px 32px -14px rgba(0, 0, 0, 0.35);
 }
 
 .work-card__media--placeholder {
@@ -131,7 +111,7 @@
 
 .work-card__head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -139,6 +119,7 @@
   display: block;
   width: 20px;
   height: 20px;
+  margin-top: 4.4px; /* centers the logo on the title's first line (24px/1.2 line box) instead of the full, possibly-wrapped block - align-items:flex-start above anchors both to the block's top */
   flex-shrink: 0;
   object-fit: contain;
 }
