@@ -85,6 +85,7 @@ ul, ol {
   font-size: 36px;
   font-weight: 400;
   line-height: 1.3;
+  margin-bottom: 28px;
 }
 
 .page h2 {
@@ -92,7 +93,11 @@ ul, ol {
   font-size: 24px;
   font-weight: 400;
   line-height: 1.3;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.page h3 {
+  margin-bottom: 24px;
 }
 
 .page p {
@@ -197,8 +202,8 @@ ul, ol {
 }
 
 /* Sponsor/partner wordmarks, e.g. about.html's "supported by" row.
-   Monochrome, fixed 22px height per the Figma spec regardless of each
-   mark's native proportions. */
+   Monochrome, fixed 16px height regardless of each mark's native
+   proportions. */
 .logo-row {
   display: flex;
   align-items: center;
@@ -209,7 +214,7 @@ ul, ol {
 
 .logo-row img {
   display: block;
-  height: 22px;
+  height: 16px;
   width: auto;
   filter: grayscale(1);
   opacity: 0.65;
