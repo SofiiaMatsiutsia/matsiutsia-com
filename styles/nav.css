@@ -107,20 +107,46 @@
   background: #eee;
 }
 
-a.site-nav__cta {
-  margin-left: auto;
-  flex-shrink: 0;
+/* Shared button system (.btn + a modifier). The only stylesheet loaded by
+   all 9 pages, so this is also the one place a button style can live and
+   reach the Figma-exported pages, which don't load styles/pages.css. */
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
+  border: 1px solid #000;
   border-radius: 8px;
   padding: 8px 16px;
-  background: #000;
-  color: #fff;
   font-family: "Figtree:Regular", sans-serif;
   font-weight: 600;
   white-space: nowrap;
+}
+
+.btn--primary {
+  background: #000;
+  color: #fff;
+}
+
+.btn--secondary {
+  background: #fff;
+  color: #000;
+}
+
+/* Nav CTA: same .btn look, plus the layout-specific bits that keep it
+   pinned to the end of the bar. */
+a.site-nav__cta {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Homepage hero actions (Vibe works + View CV), below the intro paragraph.
+   Sits inside .css-a8ck5v (gap: 20px), so only the row's own gap is needed
+   here. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* Desktop-only header icons (LinkedIn/X), left of the CTA. Hidden below
@@ -210,7 +236,7 @@ a.site-nav__cta {
    both reset under prefers-reduced-motion. */
 @media (hover: hover) and (pointer: fine) {
   .site-nav__links a,
-  .site-nav__cta,
+  .btn,
   .site-nav__toggle,
   .site-nav__social a,
   .sound-toggle {
@@ -222,8 +248,11 @@ a.site-nav__cta {
   .sound-toggle:hover {
     background: #eee;
   }
-  .site-nav__cta:hover {
+  .btn--primary:hover {
     opacity: 0.85;
+  }
+  .btn--secondary:hover {
+    background: #eee;
   }
   .site-nav__toggle:hover {
     background: #eee;
@@ -234,7 +263,7 @@ a.site-nav__cta {
 }
 
 .site-nav__links a:active,
-.site-nav__cta:active,
+.btn:active,
 .site-nav__toggle:active,
 .site-nav__social a:active,
 .sound-toggle:active {
@@ -243,14 +272,14 @@ a.site-nav__cta {
 
 @media (prefers-reduced-motion: reduce) {
   .site-nav__links a,
-  .site-nav__cta,
+  .btn,
   .site-nav__toggle,
   .site-nav__social a,
   .sound-toggle {
     transition: none;
   }
   .site-nav__links a:active,
-  .site-nav__cta:active,
+  .btn:active,
   .site-nav__toggle:active,
   .site-nav__social a:active,
   .sound-toggle:active {
@@ -295,6 +324,17 @@ a.site-nav__cta {
   .site-nav__cta {
     padding: 8px 12px;
     font-size: 13px;
+  }
+
+  /* Hero buttons: content-sized side by side on tablet/desktop, but on
+     mobile the row stretches edge to edge with both buttons splitting it
+     equally instead of shrink-wrapping their labels. */
+  .hero-actions {
+    align-self: stretch;
+  }
+
+  .hero-actions .btn {
+    flex: 1;
   }
 
   html.js .site-nav__toggle {

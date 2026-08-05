@@ -121,10 +121,15 @@ HTML/CSS/fonts/images and drops the proprietary runtime, since that runtime:
 - **The homepage's "Experiments with GenAI" and "Download CV" pills were
   removed** (all 3 breakpoint copies of each). They were inert Figma Sites
   "interaction" elements (`role="link"`, no `href`) with no working
-  destination. Both ideas now have a real home: "Experiments with GenAI" as
-  the "Experiments" subsection of `design.html`, and outreach generally via
-  the new "Work with me" mailto CTA in the site nav. Add a CV file and a
-  real link back if/when "Download CV" should return.
+  destination. "Experiments with GenAI" now has a real home as the
+  "Experiments" subsection of `design.html`. "Download CV" is back as a real
+  link: the CV lives at `assets/sofiia-matsiutsia-cv.pdf` and is linked from
+  the hero as "View CV" (a `.btn--secondary`), next to a new "Vibe works"
+  primary CTA (`.btn--primary`) linking out to the Vibe Coding Collective's
+  Nodefolio site. Both share a small `.btn` / `.btn--primary` / `.btn--secondary`
+  system in `styles/nav.css` — the only stylesheet loaded by all 9 pages — which
+  the nav's "Copy my email" CTA now uses too (as `.btn--secondary`, so the page
+  has one primary black button instead of two competing ones).
 - **The 4 new pages (`about.html`, `design.html`, `talks.html`,
   `offerings.html`) are placeholders.** Structure, subnav anchors, and the
   Design page's case-study cards are real; most body copy is
