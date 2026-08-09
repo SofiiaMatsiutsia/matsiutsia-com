@@ -98,11 +98,12 @@ document.addEventListener("click", function (event) {
   play("success");
 });
 
-// Offerings "Work with me" pills get a tactile press on pointer down
-// (the mailto success above covers the release).
+// Offerings "Work with me" pills, the nav CTA, and hero buttons (.btn) get
+// a tactile press on pointer down (the mailto success above covers the
+// release for mailto links).
 document.addEventListener("pointerdown", function (event) {
-  var pill = event.target.closest && event.target.closest(".pill");
-  if (!pill) return;
+  var pressed = event.target.closest && event.target.closest(".pill, .btn");
+  if (!pressed) return;
   play("press");
 });
 
