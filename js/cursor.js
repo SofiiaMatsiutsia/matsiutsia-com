@@ -25,7 +25,8 @@
     ["team-lift-ai.html", "View case study"],
     ["housing-anywhere.html", "View project"],
     ["linkedin.com/posts/", "View video"],
-    ["vibecoders.global", "Check our community"]
+    ["vibecoders.global", "Check our community"],
+    ["ai.studio", "View project"]
   ];
 
   function labelFor(href) {

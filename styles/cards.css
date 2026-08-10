@@ -30,6 +30,27 @@
   padding: 0 20px 96px;
 }
 
+/* Homepage only: cap the section to the same content width as
+   voyage-monitor.html's desktop column (measured at 900px, border-box)
+   so the two-up grid below doesn't run wider than the case-study pages.
+   margin-top mirrors .page > section below, since index.html doesn't use
+   the shared .page wrapper that would otherwise supply it. */
+.work-section--home {
+  max-width: 900px;
+  margin-top: 40px;
+}
+
+/* Matches .page h2 (styles/pages.css) - e.g. talks.html's "Past talks &
+   workshops" - so the homepage heading reads as the same page-section
+   title used elsewhere on the site. */
+.work-section__title {
+  font-family: "EB Garamond:Regular", serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
 /* Grid: single column below 800px, 2-column masonry above it - matches
    the old .selected-works-grid behavior removed from styles/nav.css. */
 .work-grid {
@@ -53,6 +74,25 @@
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
     margin-bottom: 20px;
+  }
+}
+
+/* Homepage only: a real 2-column grid instead of the masonry above, so
+   cards read left-to-right/top-to-bottom (a "Z" order) instead of filling
+   the left column first, and both columns stay exactly equal-width
+   fractions of .work-section--home's 900px cap. */
+@media (min-width: 800px) {
+  .work-grid--home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .work-grid--home .work-card {
+    margin-bottom: 0;
+    /* Grid items default to min-width:auto, which lets a wide image's
+       intrinsic size (e.g. the 2560px voyage-monitor screenshot) inflate
+       its column past the 1fr track instead of shrinking to fit it. */
+    min-width: 0;
   }
 }
 
@@ -294,4 +334,11 @@
   .work-filters__pill:active {
     transform: none;
   }
+}
+
+/* Video card previews (js/video-preview.js drives play/pause). Keeping the
+   video out of the click path means the whole card stays one link target -
+   clicking it never triggers native video controls/scrubbing. */
+.work-card__media-video {
+  pointer-events: none;
 }

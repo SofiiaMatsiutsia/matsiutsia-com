@@ -16,6 +16,7 @@
   <script src="js/cursor.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/filters.js" defer></script>
+  <script src="js/video-preview.js" defer></script>
   <script type="module" src="js/sound.js"></script>
 </head>
 <body>
@@ -55,6 +56,11 @@
       <button type="button" class="work-filters__pill" data-filter="product-strategy" aria-pressed="false">Product strategy</button>
       <button type="button" class="work-filters__pill" data-filter="interface-design" aria-pressed="false">Interface design</button>
       <button type="button" class="work-filters__pill" data-filter="graphic-design" aria-pressed="false">Graphic design</button>
+      <button type="button" class="work-filters__pill" data-filter="3d" aria-pressed="false">3D</button>
+      <button type="button" class="work-filters__pill" data-filter="game-design" aria-pressed="false">Game design</button>
+      <button type="button" class="work-filters__pill" data-filter="exploration" aria-pressed="false">Exploration</button>
+      <button type="button" class="work-filters__pill" data-filter="mediapipe" aria-pressed="false">MediaPipe</button>
+      <button type="button" class="work-filters__pill" data-filter="vibe-projects" aria-pressed="false">Vibe projects</button>
     </div>
   </div>
   <div class="work-grid">
@@ -64,11 +70,11 @@
         <p class="work-card__desc">Real-time dashboard with vessel KPIs, map, compass, and sensor data</p>
         <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Research</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span></div>
       </a>
-      <a class="work-card" href="https://www.linkedin.com/posts/smatsiutsia_how-we-designers-test-ideas-10000x-faster-activity-7421962190988943360-BrU-?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACC8G0QBiWeI60DBzFjNyI_r9bzeq7yk6Vs" target="_blank" rel="noopener" data-tags="research interface-design">
-        <div class="work-card__media work-card__media--placeholder"></div>
+      <a class="work-card" href="https://www.linkedin.com/posts/smatsiutsia_how-we-designers-test-ideas-10000x-faster-activity-7421962190988943360-BrU-?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACC8G0QBiWeI60DBzFjNyI_r9bzeq7yk6Vs" target="_blank" rel="noopener" data-tags="research interface-design vibe-projects">
+        <div class="work-card__media"><video class="work-card__media-shot work-card__media-video" src="assets/videos/malleable-real-estate.mp4" poster="assets/videos/malleable-real-estate-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video></div>
         <div class="work-card__head"><span class="work-card__logo work-card__logo--mark" aria-hidden="true"></span><h3 class="work-card__title">AI-assisted filtering for search</h3></div>
         <p class="work-card__desc">Designed AI-assisted filtering to let user control card properties, inspired by the concept of the “Malleable Interfaces”. Non-conversational search alternative, reduced cognitive load vs. natural language prompts</p>
-        <div class="work-card__tags"><span class="work-card__tag">Research</span><span class="work-card__tag">Interface design</span></div>
+        <div class="work-card__tags"><span class="work-card__tag">Research</span><span class="work-card__tag">Interface design</span><span class="work-card__tag">Vibe projects</span></div>
       </a>
       <a class="work-card" href="internal-panel.html" target="_self" data-tags="research product-strategy interface-design">
         <div class="work-card__media"><img class="work-card__media-shot" src="assets/images/fa24cc5d3644c58624d98e55bcc397e5cc7a955d.png" alt="" loading="lazy"></div>
@@ -93,6 +99,24 @@
         <div class="work-card__head"><img class="work-card__logo" src="assets/logo/vcc_logo.svg" alt="" aria-hidden="true"><h3 class="work-card__title">Vibe Coding Collective</h3></div>
         <p class="work-card__desc">Have I told that I run AI community across the world? I also do the whole branding design there.</p>
         <div class="work-card__tags"><span class="work-card__tag">0 → 1</span><span class="work-card__tag">Product strategy</span><span class="work-card__tag">Interface design</span><span class="work-card__tag">Graphic design</span></div>
+      </a>
+      <a class="work-card" href="https://www.linkedin.com/posts/smatsiutsia_everyone-is-talking-about-fable-from-anthropic-activity-7479864887842848768-k7h2" target="_blank" rel="noopener" data-tags="3d game-design exploration vibe-projects">
+        <div class="work-card__media"><video class="work-card__media-shot work-card__media-video" src="assets/videos/tower-defense-3d.mp4" poster="assets/videos/tower-defense-3d-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video></div>
+        <div class="work-card__head"><span class="work-card__logo work-card__logo--mark" aria-hidden="true"></span><h3 class="work-card__title">Exercise on building 3D tower defence games</h3></div>
+        <p class="work-card__desc">Learned how to build a three.js environment, render characters with Meshy.AI and Blender, and think through camera work and attack logic.</p>
+        <div class="work-card__tags"><span class="work-card__tag">3D</span><span class="work-card__tag">Game design</span><span class="work-card__tag">Exploration</span><span class="work-card__tag">Vibe projects</span></div>
+      </a>
+      <a class="work-card" href="https://ai.studio/apps/6b3256e6-9ae6-4c43-9736-82127585a88d?fullscreenApplet=true" target="_blank" rel="noopener" data-tags="mediapipe exploration vibe-projects">
+        <div class="work-card__media"><video class="work-card__media-shot work-card__media-video" src="assets/videos/kaleidoscope-zoom.mp4" poster="assets/videos/kaleidoscope-zoom-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video></div>
+        <div class="work-card__head"><span class="work-card__logo work-card__logo--mark" aria-hidden="true"></span><h3 class="work-card__title">Kaleidoscope zoom</h3></div>
+        <p class="work-card__desc">Hand-tracked kaleidoscope shader &mdash; pinch right to zoom, pinch left to reshape the pattern. Hand tracking by MediaPipe, shader by gleurop on Shadertoy.</p>
+        <div class="work-card__tags"><span class="work-card__tag">MediaPipe</span><span class="work-card__tag">Exploration</span><span class="work-card__tag">Vibe projects</span></div>
+      </a>
+      <a class="work-card" href="https://www.linkedin.com/posts/smatsiutsia_working-on-vibe-coded-fire-balls-the-at-v0-activity-7426600561866674176-kvSb?" target="_blank" rel="noopener" data-tags="mediapipe exploration vibe-projects">
+        <div class="work-card__media"><video class="work-card__media-shot work-card__media-video" src="assets/videos/dragon-ball-fire-ball.mp4" poster="assets/videos/dragon-ball-fire-ball-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video></div>
+        <div class="work-card__head"><span class="work-card__logo work-card__logo--mark" aria-hidden="true"></span><h3 class="work-card__title">Dragon Ball &mdash; Fire Ball!</h3></div>
+        <p class="work-card__desc">Never gets boring playing with Three.js, MediaPipe, and Gemini.</p>
+        <div class="work-card__tags"><span class="work-card__tag">MediaPipe</span><span class="work-card__tag">Exploration</span><span class="work-card__tag">Vibe projects</span></div>
       </a>
     </div>
 </main>
