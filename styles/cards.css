@@ -295,3 +295,56 @@
     transform: none;
   }
 }
+
+/* Video card previews (js/video-preview.js drives play/pause). Keeping the
+   video out of the click path means the whole card stays one link target -
+   clicking it never triggers native video controls/scrubbing. */
+.work-card__media-video {
+  pointer-events: none;
+}
+
+/* Homepage two-column layout: curated work (2/3) + Vibe projects (1/3). */
+.work-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.work-column {
+  min-width: 0;
+}
+
+@media (min-width: 800px) {
+  .work-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+.work-column__label {
+  margin: 0 0 16px;
+  font-family: "Figtree:Regular", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.work-column__cta {
+  display: flex;
+  margin-top: 24px;
+}
+
+/* Right column stays single-column at every width - cancels .work-grid's
+   >=800px switch to column-count:2 masonry, which would otherwise also
+   fire here since it's viewport-width-based, not container-based. */
+@media (min-width: 800px) {
+  .work-grid--single {
+    display: flex;
+    flex-direction: column;
+    column-count: auto;
+  }
+}
