@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Work — Sofiia Matsiutsia</title>
+<link rel="stylesheet" href="styles.css?v=82" />
+<script>
+  try { history.scrollRestoration = "manual"; } catch (e) {}
+  (function () {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem("portfolio:work-nav") || "null");
+      if (!saved || !saved.restore || typeof saved.y !== "number") return;
+      var y = saved.y;
+      var restore = function () { window.scrollTo(0, y); };
+      restore();
+      document.addEventListener("DOMContentLoaded", restore);
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body class="work">
+
+  <header class="header">
+    <a href="index.html" class="header__back" aria-label="Back to home">
+      <img src="assets/icons/back-chevron.svg" alt="" width="38" height="26" />
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__link nav__link--about" data-cursor="soon">
+        <span class="nav__label">About</span>
+        <span class="nav__mark" aria-hidden="true">
+          <img class="nav__mark-img nav__mark-img--hover" src="assets/icons/nav-about-hover.svg" alt="" width="89" height="29" />
+          <img class="nav__mark-img nav__mark-img--selected" src="assets/icons/nav-about-selected.svg" alt="" width="89" height="29" />
+        </span>
+      </a>
+      <a href="work.html" class="nav__link nav__link--work" aria-current="page">
+        <span class="nav__label">Work</span>
+        <span class="nav__mark" aria-hidden="true">
+          <img class="nav__mark-img nav__mark-img--hover" src="assets/icons/nav-work-hover.svg" alt="" width="82" height="29" />
+          <img class="nav__mark-img nav__mark-img--selected" src="assets/icons/nav-work-selected.svg" alt="" width="82" height="29" />
+        </span>
+      </a>
+      <a class="nav__link nav__link--talks" data-cursor="soon">
+        <span class="nav__label">Talks</span>
+        <span class="nav__mark" aria-hidden="true">
+          <img class="nav__mark-img nav__mark-img--hover" src="assets/icons/nav-talks-hover.svg" alt="" width="82" height="29" />
+          <img class="nav__mark-img nav__mark-img--selected" src="assets/icons/nav-talks-selected.svg" alt="" width="82" height="29" />
+        </span>
+      </a>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="Sofiia Matsiutsia — home">
+      <img src="assets/images/logo.gif" alt="Sofiia Matsiutsia" class="logo__mark" />
+    </a>
+
+    <button type="button" class="sound-toggle" aria-label="Mute sound" aria-pressed="false">
+      <span class="sound-toggle__swap">
+        <span class="sound-toggle__layer sound-toggle__layer--on">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="sound-toggle__icon" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+          </svg>
+        </span>
+        <span class="sound-toggle__layer sound-toggle__layer--off">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="sound-toggle__icon" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </header>
+
+  <main class="work-main">
+    <div class="work-filters" role="group" aria-label="Filter projects">
+      <button type="button" class="work-filter is-active" data-filter="all" aria-pressed="true">
+        <span class="work-filter__label">All</span>
+        <span class="work-filter__count">6</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="0-1" aria-pressed="false">
+        <span class="work-filter__label">0→1</span>
+        <span class="work-filter__count">3</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="research" aria-pressed="false">
+        <span class="work-filter__label">Research</span>
+        <span class="work-filter__count">4</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="product-strategy" aria-pressed="false">
+        <span class="work-filter__label">Product strategy</span>
+        <span class="work-filter__count">4</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="interface-design" aria-pressed="false">
+        <span class="work-filter__label">Interface design</span>
+        <span class="work-filter__count">6</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="graphic-design" aria-pressed="false">
+        <span class="work-filter__label">Graphic design</span>
+        <span class="work-filter__count">3</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="3d" aria-pressed="false" hidden>
+        <span class="work-filter__label">3D</span>
+        <span class="work-filter__count">1</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="game-design" aria-pressed="false" hidden>
+        <span class="work-filter__label">Game design</span>
+        <span class="work-filter__count">1</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="exploration" aria-pressed="false" hidden>
+        <span class="work-filter__label">Exploration</span>
+        <span class="work-filter__count">3</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="mediapipe" aria-pressed="false" hidden>
+        <span class="work-filter__label">MediaPipe</span>
+        <span class="work-filter__count">2</span>
+      </button>
+      <button type="button" class="work-filter" data-filter="vibe-projects" aria-pressed="false">
+        <span class="work-filter__label">Vibe projects</span>
+        <span class="work-filter__count">1</span>
+      </button>
+    </div>
+    <p class="visually-hidden" data-filter-status aria-live="polite">Showing all 6 projects</p>
+
+    <div class="work-columns">
+          <a href="work/voyage-monitor.html" class="work-item">
+            <div class="work-item__media">
+              <video
+                src="assets/images/voyage-monitor.mp4"
+                poster="assets/images/voyage-monitor-poster.jpg"
+                width="1200"
+                height="900"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-label="Voyage Monitor dashboard animation"
+              ></video>
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Voyage Monitor dashboard</h2>
+                <p class="work-item__copy">Real-time dashboard with vessel KPIs, map, compass, and sensor data.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#0→1</span>
+                <span class="work-tag">#Research</span>
+                <span class="work-tag">#Product_strategy</span>
+                <span class="work-tag">#Interface_design</span>
+              </div>
+            </div>
+          </a>
+          <a href="work/internal-panel.html" class="work-item">
+            <div class="work-item__media">
+              <img src="assets/images/ha-unified-panel.png" alt="Housing Anywhere unified internal panel" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Unified internal panel</h2>
+                <p class="work-item__copy">Last 3 years we unified scattered internal workflows into a single Internal Panel, making life easier for Support, Sales, and Finance.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#Research</span>
+                <span class="work-tag">#Product_strategy</span>
+                <span class="work-tag">#Interface_design</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/posts/smatsiutsia_how-we-designers-test-ideas-10000x-faster-activity-7421962190988943360-BrU-?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACC8G0QBiWeI60DBzFjNyI_r9bzeq7yk6Vs" class="work-item" target="_blank" rel="noopener noreferrer">
+            <div class="work-item__media">
+              <img src="assets/images/ai-assisted-filtering.jpg" alt="AI-assisted filtering prototype" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">AI-assisted filtering for search</h2>
+                <p class="work-item__copy">Designed AI-assisted filtering to let user control card properties, inspired by the concept of the “Malleable Interfaces”. Non-conversational search alternative, reduced cognitive load vs. natural language prompts.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#Research</span>
+                <span class="work-tag">#Interface_design</span>
+                <span class="work-tag">#Vibe_projects</span>
+              </div>
+            </div>
+          </a>
+          <a href="work/team-lift-ai.html" class="work-item">
+            <div class="work-item__media">
+              <img src="assets/images/team-lift-cover.png" alt="TeamLift skills wallet" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">AI-powered skills intelligence platform</h2>
+                <p class="work-item__copy">Web platform that connects to a company’s existing data sources and builds a private knowledge graph of every employee’s actual capabilities.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#0→1</span>
+                <span class="work-tag">#Research</span>
+                <span class="work-tag">#Product_strategy</span>
+                <span class="work-tag">#Interface_design</span>
+                <span class="work-tag">#Graphic_design</span>
+              </div>
+            </div>
+          </a>
+          <a href="work/housing-anywhere.html" class="work-item">
+            <div class="work-item__media">
+              <img src="assets/images/housing-anywhere-mobile.gif" alt="Housing Anywhere mobile product animation" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Housing Anywhere</h2>
+                <p class="work-item__copy">A global rental platform that connects tenants with landlords for mid- to long-term stays.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#Interface_design</span>
+                <span class="work-tag">#Graphic_design</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://vibecoders.global/" class="work-item" target="_blank" rel="noopener noreferrer">
+            <div class="work-item__media">
+              <img src="assets/images/vibe-coding-collective.png" alt="Vibe Coding Collective branding" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Vibe Coding Collective</h2>
+                <p class="work-item__copy">Have I told that I run AI community across the world? I also do the whole branding design there.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#0→1</span>
+                <span class="work-tag">#Product_strategy</span>
+                <span class="work-tag">#Interface_design</span>
+                <span class="work-tag">#Graphic_design</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/posts/smatsiutsia_everyone-is-talking-about-fable-from-anthropic-activity-7479864887842848768-k7h2" class="work-item" data-held hidden target="_blank" rel="noopener noreferrer">
+            <div class="work-item__media">
+              <img src="assets/images/tower-defence.jpg" alt="3D tower defence experiment" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Exercise on building 3D tower defence games</h2>
+                <p class="work-item__copy">Learned how to build a three.js environment, render characters with Meshy.AI and Blender, and think through camera work and attack logic.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#3D</span>
+                <span class="work-tag">#Game_design</span>
+                <span class="work-tag">#Exploration</span>
+                <span class="work-tag">#Vibe_projects</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/posts/smatsiutsia_working-on-vibe-coded-fire-balls-the-at-v0-activity-7426600561866674176-kvSb?" class="work-item" data-held hidden target="_blank" rel="noopener noreferrer">
+            <div class="work-item__media">
+              <img src="assets/images/dragon-ball.jpg" alt="Dragon Ball fire-ball experiment" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Dragon Ball — Fire Ball!</h2>
+                <p class="work-item__copy">Never gets boring playing with Three.js, MediaPipe, and Gemini.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#MediaPipe</span>
+                <span class="work-tag">#Exploration</span>
+                <span class="work-tag">#Vibe_projects</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://ai.studio/apps/6b3256e6-9ae6-4c43-9736-82127585a88d?fullscreenApplet=true" class="work-item" data-held hidden target="_blank" rel="noopener noreferrer">
+            <div class="work-item__media">
+              <img src="assets/images/kaleidoscope-zoom.jpg" alt="Hand-tracked kaleidoscope shader" />
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__text">
+                <h2 class="work-item__title">Kaleidoscope zoom</h2>
+                <p class="work-item__copy">Hand-tracked kaleidoscope shader — pinch right to zoom, pinch left to reshape the pattern. Hand tracking by MediaPipe, shader by gleurop on Shadertoy.</p>
+              </div>
+              <div class="work-item__tags">
+                <span class="work-tag">#MediaPipe</span>
+                <span class="work-tag">#Exploration</span>
+                <span class="work-tag">#Vibe_projects</span>
+              </div>
+            </div>
+          </a>
+    </div>
+  </main>
+
+  <button type="button" class="menu-bar" id="menu-open" aria-haspopup="true" aria-controls="menu-overlay" aria-expanded="false">
+    Menu
+  </button>
+
+<div class="menu-overlay" id="menu-overlay" hidden>
+  <div class="ring-stage" aria-hidden="true">
+    <div class="ring ring--1"></div>
+    <div class="ring ring--2"></div>
+    <div class="ring ring--3"></div>
+    <div class="ring ring--4"></div>
+    <div class="ring ring--5"></div>
+  </div>
+
+  <nav class="menu-overlay__nav" aria-label="Primary">
+    <a class="menu-overlay__link menu-overlay__link--about" data-cursor="soon"><span>About</span></a>
+    <a href="work.html" class="menu-overlay__link menu-overlay__link--work" aria-current="page"><span>Work</span></a>
+    <a class="menu-overlay__link menu-overlay__link--talks" data-cursor="soon"><span>talks</span></a>
+  </nav>
+
+  <div class="menu-overlay__contact">
+    <button type="button" class="menu-overlay__contact-link menu-overlay__contact-link--email">
+      <span class="menu-overlay__contact-width" aria-hidden="true">Copy email</span>
+      <span class="menu-overlay__contact-text">Copy email</span>
+    </button>
+    <a href="https://www.linkedin.com/in/smatsiutsia/" class="menu-overlay__contact-link menu-overlay__contact-link--linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://x.com/SMatsiutsia" class="menu-overlay__contact-link menu-overlay__contact-link--twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
+  </div>
+
+  <button type="button" class="menu-bar menu-overlay__close" id="menu-close" aria-controls="menu-overlay">
+    Close
+  </button>
+</div>
+
+<script src="script.js?v=41"></script>
+</body>
+</html>
